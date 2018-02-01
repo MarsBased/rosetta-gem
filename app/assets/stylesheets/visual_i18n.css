@@ -1,0 +1,71 @@
+/*
+ *= require font-awesome
+ */
+
+ /* The side navigation menu */
+.phrases-menu {
+     height: 100%; /* 100% Full-height */
+     width: 0; /* 0 width - change this with JavaScript */
+     position: fixed; /* Stay in place */
+     z-index: 1000; /* Stay on top */
+     top: 0; /* Stay at the top */
+     left: 0;
+     background-color: #FFF; /* Black*/
+     overflow-x: hidden; /* Disable horizontal scroll */
+     transition: 0.2s; /* 0.5 second transition effect to slide in the phrases-menu */
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.phrases-menu.open{
+  width: 350px;
+}
+
+.phrases-menu__header{
+   background-color: #009688;
+   height: 115px;
+   color: #FFF;
+   font-family: "Times New Roman", Times, serif;
+}
+
+ /* The navigation menu links */
+.phrases-menu__block {
+  padding: 21px 0 14px;
+  color: #686866;
+  display: block;
+  transition: 0.3s;
+  margin: 0 10px;
+}
+.phrases-menu__block:not(:first-child) {
+   border-top: 1px solid #dfdfdf;
+}
+
+.phrases-menu__title{
+  margin: 0;
+  padding: 20px 11px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+}
+.phrases-menu__key{
+  font-size: 11px;
+  font-family: Verdana;
+  font-weight: 900;
+  margin-bottom: 11px;
+}
+.phrases-menu__phrase{
+   font-size: 11px;
+   font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+}
+
+ /* When you mouse over the navigation links, change their color */
+.phrases-menu__block:hover {
+}
+
+ /* Position and style the close button (top right corner) */
+.phrases-menu__closebtn {
+   position: absolute;
+   top: 0;
+   right: 10px;
+   font-size: 36px;
+   margin-left: 50px;
+   text-decoration: none;
+   color: #fff;
+}
