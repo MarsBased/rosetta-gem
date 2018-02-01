@@ -1,19 +1,19 @@
 <% if RequestStore.store[:used_phrases] %>
-  <div id="phrasesMenu" class="translate-menu">
-    <div class="translate-menu__header">
-      <a href="javascript:void(0)" class="translate-menu__closebtn" onclick="closeNav()">&times;</a>
-      <h1 class="translate-menu__title">Used Prases</h1>
+  <div id="phrasesMenu" class="phrases-menu">
+    <div class="phrases-menu__header">
+      <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()">&times;</a>
+      <h1 class="phrases-menu__title">Used Prases</h1>
     </div>
     <% RequestStore.store[:used_phrases].uniq.each do |phrase| %>
-      <div class="translate-menu__block">
-        <div class="translate-menu__key">
+      <div class="phrases-menu__block">
+        <div class="phrases-menu__key">
           <%# link_to('OneSky',
                       "https://osmhfnr.oneskyapp.com/collaboration/translate/project/project/129280/language/1#/?keyword=#{phrase[:code]}",
                       target: '_blank',
-                      class: 'btn--small btn-secondary translate-menu__btn') %>
+                      class: 'btn--small btn-secondary phrases-menu__btn') %>
           <%= phrase[:code] %>
         </div>
-        <div class="translate-menu__phrase">
+        <div class="phrases-menu__phrase">
           <%= phrase[:phrase] %>
         </div>
       </div>

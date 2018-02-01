@@ -3,7 +3,7 @@
  */
 
  /* The side navigation menu */
-.translate-menu {
+.phrases-menu {
      height: 100%; /* 100% Full-height */
      width: 0; /* 0 width - change this with JavaScript */
      position: fixed; /* Stay in place */
@@ -12,14 +12,14 @@
      left: 0;
      background-color: #FFF; /* Black*/
      overflow-x: hidden; /* Disable horizontal scroll */
-     transition: 0.2s; /* 0.5 second transition effect to slide in the translate-menu */
+     transition: 0.2s; /* 0.5 second transition effect to slide in the phrases-menu */
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.translate-menu.open{
+.phrases-menu.open{
   width: 350px;
 }
 
-.translate-menu__header{
+.phrases-menu__header{
    background-color: #009688;
    height: 115px;
    color: #FFF;
@@ -27,40 +27,40 @@
 }
 
  /* The navigation menu links */
-.translate-menu__block {
+.phrases-menu__block {
   padding: 21px 0 14px;
   color: #686866;
   display: block;
   transition: 0.3s;
   margin: 0 10px;
 }
-.translate-menu__block:not(:first-child) {
+.phrases-menu__block:not(:first-child) {
    border-top: 1px solid #dfdfdf;
 }
 
-.translate-menu__title{
+.phrases-menu__title{
   margin: 0;
   padding: 20px 11px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 19px;
 }
-.translate-menu__key{
+.phrases-menu__key{
   font-size: 11px;
   font-family: Verdana;
   font-weight: 900;
   margin-bottom: 11px;
 }
-.translate-menu__phrase{
+.phrases-menu__phrase{
    font-size: 11px;
    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
 }
 
  /* When you mouse over the navigation links, change their color */
-.translate-menu__block:hover {
+.phrases-menu__block:hover {
 }
 
  /* Position and style the close button (top right corner) */
-.translate-menu__closebtn {
+.phrases-menu__closebtn {
    position: absolute;
    top: 0;
    right: 10px;
