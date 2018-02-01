@@ -1,0 +1,118 @@
+################ General configuration ###################
+AllCops:
+  TargetRubyVersion: 2.3
+  DisplayStyleGuide: true
+  Exclude:
+      - 'bin/**/*'
+      - 'db/schema.rb'
+      - 'db/structure.sql'
+      - 'db/seeds.rb'
+      - '.bundle/**/*'
+      - 'vendor/**/*'
+
+################ Disable cops ############################
+Documentation:
+  Enabled: false
+
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+Style/CommandLiteral:
+  Enabled: false
+
+Style/FormatString:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+################ Enable cops #############################
+Rails:
+  Enabled: true
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/Send:
+  Enabled: true
+
+################ Customize cops ##########################
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+
+Style/RegexpLiteral:
+  EnforcedStyle: mixed
+
+Style/SignalException:
+  EnforcedStyle: semantic
+
+Style/IfUnlessModifier:
+  MaxLineLength: 60
+
+Style/WhileUntilModifier:
+  MaxLineLength: 60
+
+Style/PercentLiteralDelimiters:
+   PreferredDelimiters:
+     '%':  '()'
+     '%i': '()'
+     '%q': '()'
+     '%Q': '()'
+     '%r': '{}'
+     '%s': '()'
+     '%w': '[]'
+     '%W': '[]'
+     '%x': '()'
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines
+
+Metrics/LineLength:
+  Max: 90
+
+Metrics/AbcSize:
+  Max: 22
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/MethodLength:
+  Max: 12
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/ModuleLength:
+  Max: 150
+
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'
+
+# ActiveAdmin, some config files (like rails environments or simple form) and the Rspec
+# specs use large blocks that we shouldn't consider as problems.
+Metrics/BlockLength:
+  Exclude:
+    - 'app/admin/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
