@@ -15,6 +15,9 @@
      transition: 0.2s; /* 0.5 second transition effect to slide in the translate-menu */
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.translate-menu.open{
+  width: 350px;
+}
 
 .translate-menu__header{
    background-color: #009688;
