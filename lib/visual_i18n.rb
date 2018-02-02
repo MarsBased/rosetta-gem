@@ -7,6 +7,7 @@ require 'visual_i18n/i18n'
 require 'visual_i18n/phrase'
 require 'visual_i18n/repository'
 require 'visual_i18n/repositories/local'
+require 'visual_i18n/repositories/onesky'
 
 module VisualI18n
   class << self
