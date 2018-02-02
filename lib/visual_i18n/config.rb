@@ -15,10 +15,6 @@ module VisualI18n
       settings[:repository]
     end
 
-    def onesky_project_id
-      settings[:onesky_project_id]
-    end
-
     def editor=(new_editor)
       settings[:editor] = new_editor
 
