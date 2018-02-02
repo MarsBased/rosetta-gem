@@ -12,9 +12,13 @@
                       target: '_blank',
                       class: 'btn--small btn-secondary phrases-menu__btn') %>
           <%= phrase.code %>
+          <%# phrase.repository_link %>
         </div>
         <div class="phrases-menu__phrase">
           <%= phrase.text %>
+        </div>
+        <div class="phrases-menu__path">
+          <%= phrase.repository_link %>
         </div>
       </div>
     <% end %>
