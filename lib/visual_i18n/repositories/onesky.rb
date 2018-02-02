@@ -7,8 +7,10 @@ module VisualI18n
       end
 
       def self.project_id
-        VisualI18n.config[:repository][:onesky_project_id]
+        VisualI18n.config.onesky_project_id
       end
+
+      def self.api_key; end
 
       def self.lang_code
         # TODO: Get codes
