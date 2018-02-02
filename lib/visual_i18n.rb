@@ -4,8 +4,9 @@ require 'font-awesome-rails'
 require 'visual_i18n/config'
 require 'visual_i18n/engine'
 require 'visual_i18n/i18n'
-require 'visual_i18n/repository/local'
 require 'visual_i18n/phrase'
+require 'visual_i18n/repository'
+require 'visual_i18n/repositories/local'
 
 module VisualI18n
   class << self
