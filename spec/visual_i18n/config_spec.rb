@@ -47,15 +47,15 @@ describe VisualI18n::Config do
 
   describe 'repository' do
     it 'sets the default repository to local' do
-      expect(subject.repository).to eq(VisualI18n::Repository::Local)
+      expect(subject.repository).to eq(VisualI18n::Repositories::Local)
     end
 
     it 'allows to change the repository' do
-      subject.repository = VisualI18n::Repository::FooBar
+      subject.repository = VisualI18n::Repositories::FooBar
 
-      expect(subject.repository).to eq(VisualI18n::Repository::FooBar)
+      expect(subject.repository).to eq(VisualI18n::Repositories::FooBar)
     end
   end
 end
 
-module VisualI18n; module Repository; class FooBar; end end end
+module VisualI18n; module Repositories; class FooBar; end end end

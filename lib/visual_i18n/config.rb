@@ -1,11 +1,11 @@
 module VisualI18n
-
   def self.config
     @config ||= Config.new
   end
 
   class Config
-    CONFIG_FILE = '.visual-i18n-config'
+
+    CONFIG_FILE = '.visual-i18n-config'.freeze
 
     def editor
       settings[:editor]
@@ -50,7 +50,7 @@ module VisualI18n
     end
 
     def config_file
-      if File.exists?("#{Dir.pwd}/#{CONFIG_FILE}")
+      if File.exist?("#{Dir.pwd}/#{CONFIG_FILE}")
         "#{Dir.pwd}/#{CONFIG_FILE}"
       else
         "#{Dir.home}/#{CONFIG_FILE}"
@@ -58,11 +58,12 @@ module VisualI18n
     end
 
     def default_settings
-      { editor: default_editor, repository: Repository::Local }
+      { editor: default_editor, repository: Repositories::Local }
     end
 
     def default_editor
       ENV['GEM_EDITOR'] || ENV['VISUAL'] || ENV['EDITOR'] || '/usr/local/bin/subl'
     end
+
   end
 end

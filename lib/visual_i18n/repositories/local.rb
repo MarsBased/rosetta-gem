@@ -1,6 +1,6 @@
 module VisualI18n
-  module Repository
-    class Local
+  module Repositories
+    class Local < VisualI18n::Repository
 
       def self.build_link(keys)
         path = I18n.load_path.flatten.find { |filename| file_has_phrase?(filename, keys) }
