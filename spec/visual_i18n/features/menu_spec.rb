@@ -5,6 +5,8 @@ feature 'Show menu' do
     find('.open-phrases-menu-btn').click
 
     expect(page).to have_selector '.phrases-menu.open'
-    expect(page).to have_content 'Hello world!!'
+    within '.phrases-menu' do
+      expect(page).to have_content 'Hello world!'
+    end
   end
 end

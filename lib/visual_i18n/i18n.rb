@@ -7,13 +7,15 @@ module I18n
   class << self
 
     def translate(*args)
-      return super unless RequestStore.store[:used_phrases]
-
       output = super
-      code = normalize_keys('', args.dig(0), args.dig(1, :scope)).join('.')
 
-      if exists?(code, config.locale)
-        RequestStore.store[:used_phrases] << { code: code, phrase: output }
+      if VisualI18n.store_phrases?
+
+        code = normalize_keys('', args.dig(0), args.dig(1, :scope)).join('.')
+
+        if exists?(code, config.locale)
+          VisualI18n.add_phrase(code: code, text: output)
+        end
       end
 
       output
