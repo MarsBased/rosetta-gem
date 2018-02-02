@@ -1,9 +1,11 @@
+require 'request_store'
+require 'font-awesome-rails'
+
+require 'visual_i18n/config'
 require 'visual_i18n/engine'
 require 'visual_i18n/i18n'
 require 'visual_i18n/repository/local'
 require 'visual_i18n/phrase'
-require 'request_store'
-require 'font-awesome-rails'
 
 module VisualI18n
   class << self
@@ -12,7 +14,7 @@ module VisualI18n
       fail ArgumentError, 'missing keys argument' if args[:keys].blank?
       fail ArgumentError, 'missing phrase argument' if args[:text].blank?
 
-      repository_link = config[:repository].build_link(args[:keys])
+      repository_link = config.repository.build_link(args[:keys])
       phrases << Phrase.new(args[:keys], args[:text], repository_link)
     end
 
@@ -23,10 +25,6 @@ module VisualI18n
     def store_phrases?
       true
       # !!RequestStore.store[:used_phrases]
-    end
-
-    def config
-      { repository: Repository::Local }
     end
 
   end
