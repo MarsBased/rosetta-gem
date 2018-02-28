@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  scope '(:locale)' do
+    root to: 'samples#index'
+    resource :samples, only: %w[index]
+  end
+
 end
