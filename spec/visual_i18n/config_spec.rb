@@ -45,6 +45,17 @@ describe VisualI18n::Config do
     end
   end
 
+  describe 'Setup' do
+    it do
+      VisualI18n.setup do |config|
+        config.onesky_project_id = 'Foo'
+        config.repository = VisualI18n::Repositories::FooBar
+      end
+      expect(VisualI18n.config.onesky_project_id).to eq 'Foo'
+      expect(VisualI18n.config.repository).to eq(VisualI18n::Repositories::FooBar)
+    end
+  end
+
   describe 'repository' do
     it 'sets the default repository to local' do
       expect(subject.repository).to eq(VisualI18n::Repositories::Local)

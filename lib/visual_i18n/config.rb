@@ -3,32 +3,34 @@ module VisualI18n
     @config ||= Config.new
   end
 
+  def self.setup
+    yield config
+  end
+
+  delegate :repository, to: :config
+
   class Config
 
+    attr_accessor :onesky_project_id, :repository
+
     CONFIG_FILE = '.visual-i18n-config'.freeze
+
+    def initialize
+      set_defaults!
+    end
+
+    def set_defaults!
+      @repository = VisualI18n::Repositories::Local
+    end
 
     def editor
       settings[:editor]
     end
 
-    def repository
-      settings[:repository]
-    end
-
-    def onesky_project_id
-      settings[:onesky_project_id]
-    end
-
     def editor=(new_editor)
       settings[:editor] = new_editor
 
-      if new_editor && new_editor != editor
-        write_settings(editor: new_editor)
-      end
-    end
-
-    def repository=(new_repository)
-      settings[:repository] = new_repository
+      write_settings(editor: new_editor) if new_editor && new_editor != editor
     end
 
     def settings
@@ -49,7 +51,7 @@ module VisualI18n
 
     def local_settings
       YAML.load_file(config_file)
-    rescue
+    rescue StandardError
       {}
     end
 
@@ -62,7 +64,7 @@ module VisualI18n
     end
 
     def default_settings
-      { editor: default_editor, repository: Repositories::Local }
+      { editor: default_editor }
     end
 
     def default_editor
