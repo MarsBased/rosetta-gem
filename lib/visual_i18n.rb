@@ -12,6 +12,12 @@ require 'visual_i18n/repositories/onesky'
 module VisualI18n
   class << self
 
+    delegate :setup, to: :config
+
+    def config
+      @config ||= Config.new
+    end
+
     def add_phrase(**args)
       fail ArgumentError, 'missing keys argument' if args[:keys].blank?
       fail ArgumentError, 'missing phrase argument' if args[:text].blank?
@@ -27,6 +33,10 @@ module VisualI18n
     def store_phrases?
       true
       # !!RequestStore.store[:used_phrases]
+    end
+
+    def locale
+      I18n.locale
     end
 
   end

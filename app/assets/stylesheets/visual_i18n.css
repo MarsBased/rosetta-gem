@@ -1,4 +1,3 @@
-
 /*
  *= require font-awesome
  */
@@ -22,6 +21,8 @@
 
 .phrases-menu__header{
   height: 87px;
+  padding: 20px 12px;
+  font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
 }
 
 .phrases-menu__block {
@@ -36,7 +37,7 @@
 
 .phrases-menu__title{
   margin: 0;
-  padding: 20px 11px;
+  padding: 10px 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 31px;
   font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
@@ -69,20 +70,30 @@
   color: #686866;
 }
 
-
 /* open-phrases-menu-btn */
 .open-phrases-menu-btn{
   transform: rotate(90deg);
   transform-origin: left top 0;
   position: absolute;
   bottom: 125px;
-  left: 25px;
+  left: 40px;
   background-color: #F5F5F5;
   color: #686866;
   font-weight: 100;
   font-size: 19px;
   font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
-  padding: 3px 19px;
+  padding: 13px 23px 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 1px solid #BDBDBD;
+  display: block;
+}
+
+.open-phrases-menu-btn--language{
+  transform: rotate(270deg);
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 7px;
+  font-weight: 600;
+  font-size: 13px;
 }
