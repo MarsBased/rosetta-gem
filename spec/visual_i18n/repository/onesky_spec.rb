@@ -6,8 +6,8 @@ module VisualI18n
       subject { described_class.new }
 
       before(:each) do
-        stub_const('VisualI18n::Repositories::Onesky::BASE_URL', 'http://lol.lol')
         described_class.any_instance.stub(:project_id).and_return('111')
+        described_class.any_instance.stub(:base_url).and_return('http://lol.lol')
       end
 
       describe '#phrase_url' do

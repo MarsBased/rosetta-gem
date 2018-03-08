@@ -1,9 +1,8 @@
 module VisualI18n
   class Config
 
-    attr_accessor :onesky_project_id, :repository
-
-    CONFIG_FILE = '.visual-i18n-config'.freeze
+    attr_accessor :repository,
+                  :onesky_api_key, :onesky_api_secret, :onesky_project_id, :onesky_subdomain
 
     def initialize
       set_defaults!

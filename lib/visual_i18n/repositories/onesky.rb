@@ -2,28 +2,30 @@ module VisualI18n
   module Repositories
     class Onesky < VisualI18n::Repository
 
-      attr_reader :config
-
-      DEFAULT_LANG_ID = '1'.freeze
-      BASE_URL = 'https://osmhfnr.oneskyapp.com/collaboration/translate/project/project'.freeze
-      LANGUAGE_FILE_PATH = 'lib/visual_i18n/repositories/onesky/languages_ids.yml'.freeze
-
-      def initialize
-        @config = VisualI18n.config
-      end
-
       def self.build_link(keys, code: nil)
-        new.phrase_url(keys, code: code)
+        new.phrase_url(keys, code: code.to_s)
       end
 
       def phrase_url(keys, code: nil)
-        "#{BASE_URL}/#{project_id}/language/#{lang_id(code)}#/?keyword=#{keys.join('.')}"
+        "#{base_url}/#{project_id}/language/#{lang_id(code)}#/?keyword=#{keys.join('.')}"
       end
 
       private
 
-      def project_id
-        config.onesky_project_id
+      DEFAULT_LANG_ID = '1'.freeze
+      LANGUAGE_FILE_PATH = 'lib/visual_i18n/repositories/onesky/languages_ids.yml'.freeze
+
+      delegate :onesky_project_id, :onesky_subdomain,
+               to: :config
+      alias project_id onesky_project_id
+      alias subdomain onesky_subdomain
+
+      def config
+        VisualI18n.config
+      end
+
+      def base_url
+        "https://#{subdomain}.oneskyapp.com/collaboration/translate/project/project"
       end
 
       def lang_id(lang_iso_code = nil)

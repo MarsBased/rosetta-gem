@@ -1,9 +1,7 @@
 $:.push File.expand_path('../lib', __FILE__)
 
-# Maintain your gem's version:
 require 'visual_i18n/version'
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = 'visual-i18n'
   s.version     = VisualI18n::VERSION
@@ -18,12 +16,16 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 5.1.4'
 
-  s.add_dependency 'font-awesome-rails'
+  s.add_dependency 'onesky-rails'
   s.add_dependency 'request_store'
 
+  s.add_dependency 'font-awesome-rails'
+
+  # Development/Test dependencies
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'pry-rails'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'figaro'
 end

@@ -2,7 +2,7 @@ module VisualI18n
   module Repositories
     class Local < VisualI18n::Repository
 
-      def self.build_link(keys)
+      def self.build_link(keys, **_args)
         path = I18n.load_path.flatten.find { |filename| file_has_phrase?(filename, keys) }
         path && Pathname.new(path).relative_path_from(Rails.root)
       end
