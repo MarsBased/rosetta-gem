@@ -19,6 +19,7 @@ module VisualI18n
   class << self
 
     delegate :setup, to: :config
+    delegate :repository, to: :config
 
     def config
       @config ||= Config.new

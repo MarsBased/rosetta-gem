@@ -2,7 +2,8 @@ module VisualI18n
   class Config
 
     attr_accessor :repository,
-                  :onesky_api_key, :onesky_api_secret, :onesky_project_id, :onesky_subdomain
+                  :onesky_api_key, :onesky_api_secret, :onesky_project_id,
+                  :onesky_subdomain
 
     def initialize
       set_defaults!

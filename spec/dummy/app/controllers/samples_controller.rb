@@ -1,14 +1,9 @@
 class SamplesController < ApplicationController
 
-  def index
-    # TODO: move to an specific class to initialize proccess with the config
-    # Is requires to initialize Translate Menu
-    RequestStore.store[:used_phrases] = []
-  end
+  before_action :initialize_visual_i18n
 
   def local
-    RequestStore.store[:used_phrases] = []
-
+    # Sampel of local configuration, this should be in a initializer
     VisualI18n.setup do |config|
       config.repository = VisualI18n::Repositories::Local
     end
@@ -17,8 +12,7 @@ class SamplesController < ApplicationController
   end
 
   def onesky
-    RequestStore.store[:used_phrases] = []
-
+    # Sampel of onesky configuration, this should be in a initializer
     VisualI18n.setup do |config|
       config.onesky_api_key = ENV['ONESKY_API_KEY']
       config.onesky_api_secret = ENV['ONESKY_API_SECRET']
@@ -28,6 +22,14 @@ class SamplesController < ApplicationController
     end
 
     render :index
+  end
+
+  private
+
+  def initialize_visual_i18n
+    # TODO: move to an specific class to initialize proccess with the config
+    # Is requires to initialize Translate Menu
+    RequestStore.store[:used_phrases] = []
   end
 
 end
