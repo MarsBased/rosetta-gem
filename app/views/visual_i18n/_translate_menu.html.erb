@@ -4,7 +4,7 @@
       <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()">&times;</a>
       <h1 class="phrases-menu__title">Visual Phrases</h1>
       <div class="phrases-menu__info">
-        Repository <%= VisualI18n.config.repository.name.demodulize.humanize %> | <b><%= VisualI18n.locale %></b>
+        Repository <%= VisualI18n.repository.label %> | <b><%= VisualI18n.locale %></b>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
           <%= phrase.text %>
         </div>
 
-        <%= render "visual_i18n/#{VisualI18n.config.repository.name.demodulize.parameterize}/actions",
+        <%= render "visual_i18n/#{VisualI18n.repository.id}/actions",
                    phrase: phrase %>
       </div>
     <% end %>
