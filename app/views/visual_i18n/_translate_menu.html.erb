@@ -1,28 +1,31 @@
 <% if VisualI18n.store_phrases? %>
-  <div id="phrasesMenu" class="phrases-menu">
+  <div id="phrasesMenu" class="phrases-menu <%= VisualI18n.repository.id %>">
     <div class="phrases-menu__header">
       <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()">&times;</a>
-      <h1 class="phrases-menu__title">Used Phrases</h1>
+      <h1 class="phrases-menu__title">Visual Phrases</h1>
+      <div class="phrases-menu__info">
+        Repository <%= VisualI18n.repository.label %> | <b><%= VisualI18n.locale %></b>
+      </div>
     </div>
+
     <% VisualI18n.phrases.each do |phrase| %>
       <div class="phrases-menu__block">
         <div class="phrases-menu__key">
-          <%# link_to('OneSky',
-                      "https://osmhfnr.oneskyapp.com/collaboration/translate/project/project/129280/language/1#/?keyword=#{phrase[:code]}",
-                      target: '_blank',
-                      class: 'btn--small btn-secondary phrases-menu__btn') %>
           <%= phrase.code %>
-          <%# phrase.repository_link %>
         </div>
+
         <div class="phrases-menu__phrase">
           <%= phrase.text %>
         </div>
-        <div class="phrases-menu__path">
-          <%= phrase.repository_link %>
-        </div>
+
+        <%= render "visual_i18n/#{VisualI18n.repository.id}/actions",
+                   phrase: phrase %>
       </div>
     <% end %>
   </div>
 
-  <a class="open-phrases-menu-btn" onclick="openNav()">Phrases</a>
+  <a class="open-phrases-menu-btn" onclick="openNav()">
+    Phrases
+    <span class="open-phrases-menu-btn--language">[<%= VisualI18n.locale %>]</span>
+  </a>
 <% end %>

@@ -1,6 +1,0 @@
-es:
-  samples:
-    index:
-      hello: "Hola Mundo!!"
-    sample_partial:
-      some_text: "Esto es un texto de ejemplo en un parcial"

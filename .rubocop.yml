@@ -64,12 +64,6 @@ Style/RegexpLiteral:
 Style/SignalException:
   EnforcedStyle: semantic
 
-Style/IfUnlessModifier:
-  MaxLineLength: 60
-
-Style/WhileUntilModifier:
-  MaxLineLength: 60
-
 Style/PercentLiteralDelimiters:
    PreferredDelimiters:
      '%':  '()'

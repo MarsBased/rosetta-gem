@@ -7,6 +7,10 @@ Capybara.javascript_driver = :webkit
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers
+
+  config.before(:each) do
+    VisualI18n.config.set_defaults!
+  end
 end
 
 Capybara.configure do |config|
