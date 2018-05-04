@@ -2,6 +2,10 @@ module VisualI18n
   module Repositories
     class Onesky < VisualI18n::Repository
 
+      def self.label
+        'Onesky'
+      end
+
       def self.build_link(keys, code: nil)
         new.phrase_url(keys, code: code.to_s)
       end

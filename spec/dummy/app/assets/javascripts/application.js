@@ -12,4 +12,3 @@
 //
 //= require_tree .
 //= require_tree .
-//= require visual_i18n

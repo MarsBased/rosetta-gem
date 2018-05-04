@@ -1,5 +1,4 @@
 require 'request_store'
-require 'font-awesome-rails'
 
 require 'visual_i18n/config'
 require 'visual_i18n/engine'

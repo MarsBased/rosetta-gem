@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$:.push File.expand_path('lib', __dir__)
 
 require 'visual_i18n/version'
 
@@ -14,12 +14,10 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '~> 5.1.4'
+  s.add_dependency 'rails'
 
   s.add_dependency 'onesky-rails'
   s.add_dependency 'request_store'
-
-  s.add_dependency 'font-awesome-rails'
 
   # Development/Test dependencies
   s.add_development_dependency 'capybara'

@@ -1,31 +1,116 @@
 <% if VisualI18n.store_phrases? %>
+  <style>
+    .phrases-menu {
+      height: 100%;
+      width: 350px;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: -350px;
+      background-color: #F5F5F5;
+      color: #686866;
+      transition: 0.2s;
+      box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
+    }
+    .phrases-menu.open{
+      left: 0px;
+    }
+
+    .phrases-menu__block {
+      color: #686866;
+      display: block;
+      text-decoration: none;
+      padding: 21px 0 14px;
+      transition: 0.3s;
+      margin: 0 10px;
+    }
+    .phrases-menu__block:hover {
+      color: #e74c3c;
+    }
+    .phrases-menu__block:not(:first-child) {
+       border-top: 1px solid #dfdfdf;
+    }
+
+    .phrases-menu__title{
+      margin: 0;
+      padding: 12px 9px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      font-weight: 400;
+    }
+    .phrases-menu__key{
+      font-size: 11px;
+      font-family: Verdana;
+      font-weight: 900;
+      margin-bottom: 11px;
+    }
+    .phrases-menu__phrase{
+       font-size: 11px;
+       font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+    }
+
+    .phrases-menu__block:hover {
+    }
+
+    .phrases-menu__closebtn {
+       position: absolute;
+       top: 0;
+       right: 10px;
+       font-size: 36px;
+       margin-left: 50px;
+       text-decoration: none;
+       color: #686866;
+    }
+    .phrases-menu__closebtn:hover{
+      color: #686866;
+    }
+
+    /* open-phrases-menu-btn */
+    .open-phrases-menu-btn{
+      background-color: #F5F5F5;
+      color: #686866;
+      padding: 7px 7px 8px 8px;
+      box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
+      display: block;
+      width: 38px;
+      /* opacity: 0.5; */
+      position: absolute;
+      right: -52px;
+      top: 0px;
+    }
+    .open .open-phrases-menu-btn{
+      /* opacity: 1; */
+    }
+  </style>
+
   <div id="phrasesMenu" class="phrases-menu <%= VisualI18n.repository.id %>">
-    <div class="phrases-menu__header">
-      <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()">&times;</a>
-      <h1 class="phrases-menu__title">Visual Phrases</h1>
-      <div class="phrases-menu__info">
-        Repository <%= VisualI18n.repository.label %> | <b><%= VisualI18n.locale %></b>
-      </div>
+    <div class="open-phrases-menu-btn" onclick="openNav()">
+      <%= image_tag('visual_i18n/language_icon.svg') %>
     </div>
+    <div class="phrases-menu__header">
+      <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()"><</a>
+
+    </div>
+    <h1 class="phrases-menu__title">
+      <%= VisualI18n.repository.label %> [<b><%= VisualI18n.locale %>]</b>
+    </h1>
 
     <% VisualI18n.phrases.each do |phrase| %>
-      <div class="phrases-menu__block">
-        <div class="phrases-menu__key">
-          <%= phrase.code %>
-        </div>
-
-        <div class="phrases-menu__phrase">
-          <%= phrase.text %>
-        </div>
-
-        <%= render "visual_i18n/#{VisualI18n.repository.id}/actions",
-                   phrase: phrase %>
-      </div>
+      <%= render "visual_i18n/#{VisualI18n.repository.id}/actions",
+                 phrase: phrase %>
     <% end %>
   </div>
 
-  <a class="open-phrases-menu-btn" onclick="openNav()">
-    Phrases
-    <span class="open-phrases-menu-btn--language">[<%= VisualI18n.locale %>]</span>
-  </a>
+  <script type="text/javascript">
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+        document.getElementById("phrasesMenu").classList.add("open");
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+        document.getElementById("phrasesMenu").classList.remove("open");
+    }
+  </script>
 <% end %>
