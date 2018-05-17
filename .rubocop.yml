@@ -14,7 +14,7 @@ AllCops:
 Documentation:
   Enabled: false
 
-Layout/MultilineOperationIndentation:
+Style/MultilineOperationIndentation:
   Enabled: false
 
 Style/CommandLiteral:
@@ -38,7 +38,7 @@ Rails/Delegate:
 Rails/OutputSafety:
   Enabled: false
 
-Rails/SkipsModelValidations:
+Style/FileName:
   Enabled: false
 
 ################ Enable cops #############################
@@ -76,11 +76,16 @@ Style/PercentLiteralDelimiters:
      '%W': '[]'
      '%x': '()'
 
-Layout/EmptyLinesAroundClassBody:
+Style/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
+
+Style/VariableNumber:
+  EnforcedStyle: 'snake_case'
 
 Metrics/LineLength:
   Max: 90
+  Exclude:
+    - spec/**/*
 
 Metrics/AbcSize:
   Max: 22
@@ -99,9 +104,6 @@ Metrics/ClassLength:
 
 Metrics/ModuleLength:
   Max: 150
-
-Naming/VariableNumber:
-  EnforcedStyle: 'snake_case'
 
 # ActiveAdmin, some config files (like rails environments or simple form) and the Rspec
 # specs use large blocks that we shouldn't consider as problems.

@@ -1,4 +1,3 @@
-
 module VisualI18n
   module Repositories
     class Onesky

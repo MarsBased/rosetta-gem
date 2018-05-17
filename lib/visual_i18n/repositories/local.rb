@@ -7,6 +7,7 @@ module VisualI18n
         path && Pathname.new(path).relative_path_from(Rails.root)
       end
 
+      # rubocop:disable Style/Send
       def self.file_has_phrase?(filename, keys)
         type = File.extname(filename).tr('.', '').downcase
         return unless type == 'yml'
@@ -17,7 +18,8 @@ module VisualI18n
         end
 
         data.dig(I18n.config.locale.to_s, *keys.map(&:to_s))
-     end
+      end
+      # rubocop:enable Style/Send
 
     end
   end

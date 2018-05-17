@@ -15,7 +15,7 @@ namespace :visual_i18n do
       ::VisualI18n::Repositories::Onesky::Client.new(
         'api_key' => VisualI18n.config.onesky_api_key,
         'api_secret' => VisualI18n.config.onesky_api_secret,
-        'project_id' =>  VisualI18n.config.onesky_project_id
+        'project_id' => VisualI18n.config.onesky_project_id
       )
     end
 
