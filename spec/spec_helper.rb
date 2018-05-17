@@ -10,6 +10,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     VisualI18n.config.set_defaults!
+    VisualI18n.activate!
   end
 end
 

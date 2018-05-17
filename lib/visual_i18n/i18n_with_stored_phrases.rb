@@ -2,7 +2,7 @@ module VisualI18n
   module I18nWithStoredPhrases
     def translate(*args)
       output = super
-      return output unless VisualI18n.store_phrases?
+      return output unless VisualI18n.active?
 
       keys = normalize_keys('', args.dig(0), args.dig(1, :scope))
       code = keys.join('.')

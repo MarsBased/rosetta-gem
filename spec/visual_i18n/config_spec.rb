@@ -33,6 +33,19 @@ describe VisualI18n::Config do
       expect(subject.repository).to eq(VisualI18n::Repositories::FooBar)
     end
   end
+
+  describe '#set_defaults!' do
+    describe 'deactive' do
+      it do
+        expect(subject.active?).to eq false
+        subject.activate!
+        expect(subject.active?).to eq true
+
+        subject.set_defaults!
+        expect(subject.active?).to eq false
+      end
+    end
+  end
 end
 
 module VisualI18n; module Repositories; class FooBar; end end end

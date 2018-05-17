@@ -59,4 +59,14 @@ RSpec.describe VisualI18n do
       expect(described_class.store_phrases?).to be_falsey
     end
   end
+
+  describe 'enabled/disabled' do
+    it do
+      described_class.activate!
+      expect(described_class.active?).to eq true
+      described_class.deactivate!
+      expect(described_class.active?).to eq false
+    end
+  end
+
 end

@@ -13,10 +13,7 @@ module VisualI18n
 
     def set_defaults!
       @repository = VisualI18n::Repositories::Local
-    end
-
-    def setup
-      yield self
+      deactivate!
     end
 
     class OneSky
@@ -24,6 +21,29 @@ module VisualI18n
       attr_accessor :project_id, :subdomain
 
     end
+
+    def setup
+      yield self
+    end
+
+    def active?
+      active
+    end
+
+    def activate!
+      @active = true
+    end
+
+    def deactivate!
+      @active = false
+    end
+
+    private
+
+    def active
+      @active ||= false
+    end
+
 
   end
 end

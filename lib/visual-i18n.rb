@@ -13,8 +13,8 @@ require 'visual_i18n/repositories/onesky'
 module VisualI18n
   class << self
 
-    delegate :setup, to: :config
-    delegate :repository, to: :config
+    delegate :repository, :setup, :active?, :activate!, :deactivate!,
+             to: :config
 
     def config
       @config ||= Config.new
@@ -30,10 +30,6 @@ module VisualI18n
 
     def phrases
       RequestStore.store[:used_phrases] ||= []
-    end
-
-    def store_phrases?
-      true
     end
 
     def locale
