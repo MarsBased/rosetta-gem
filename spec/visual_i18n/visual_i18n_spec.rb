@@ -62,10 +62,10 @@ RSpec.describe VisualI18n do
 
   describe 'enabled/disabled' do
     it do
-      described_class.activate!
-      expect(described_class.active?).to eq true
-      described_class.deactivate!
-      expect(described_class.active?).to eq false
+      described_class.enable
+      expect(described_class.enabled?).to eq true
+      described_class.disable
+      expect(described_class.enabled?).to eq false
     end
   end
 

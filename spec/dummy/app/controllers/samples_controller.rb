@@ -1,6 +1,6 @@
 class SamplesController < ApplicationController
 
-  before_action :initialize_visual_i18n
+  before_action :enable_visual_i18n
 
   def local
     # Sample of local configuration, this should be in a initializer
@@ -20,14 +20,6 @@ class SamplesController < ApplicationController
     end
 
     render :index
-  end
-
-  private
-
-  def initialize_visual_i18n
-    # TODO: move to an specific class to initialize proccess with the config
-    # Is requires to initialize Translate Menu
-    # RequestStore.store[:used_phrases] = []
   end
 
 end

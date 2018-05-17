@@ -37,12 +37,12 @@ describe VisualI18n::Config do
   describe '#set_defaults!' do
     describe 'deactive' do
       it do
-        expect(subject.active?).to eq false
-        subject.activate!
-        expect(subject.active?).to eq true
+        expect(subject.enabled?).to eq false
+        subject.enable
+        expect(subject.enabled?).to eq true
 
         subject.set_defaults!
-        expect(subject.active?).to eq false
+        expect(subject.enabled?).to eq false
       end
     end
   end

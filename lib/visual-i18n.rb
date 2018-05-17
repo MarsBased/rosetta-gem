@@ -6,6 +6,7 @@ require 'visual_i18n/engine'
 require 'visual_i18n/i18n_with_stored_phrases'
 require 'visual_i18n/phrase'
 require 'visual_i18n/repository'
+require 'visual_i18n/controller_additions'
 
 require 'visual_i18n/repositories/local'
 require 'visual_i18n/repositories/onesky'
@@ -13,7 +14,7 @@ require 'visual_i18n/repositories/onesky'
 module VisualI18n
   class << self
 
-    delegate :repository, :setup, :active?, :activate!, :deactivate!,
+    delegate :repository, :setup, :enabled?, :enable, :disable,
              to: :config
 
     def config

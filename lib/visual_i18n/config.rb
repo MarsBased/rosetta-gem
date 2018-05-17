@@ -13,7 +13,7 @@ module VisualI18n
 
     def set_defaults!
       @repository = VisualI18n::Repositories::Local
-      deactivate!
+      disable
     end
 
     class OneSky
@@ -26,24 +26,29 @@ module VisualI18n
       yield self
     end
 
-    def active?
+    def enabled?
       active
     end
 
-    def activate!
-      @active = true
+    def enable
+      self.active = true
     end
 
-    def deactivate!
-      @active = false
+    def disable
+      self.active = false
     end
 
     private
 
     def active
-      @active ||= false
+      RequestStore.store[:visual_i18n_enabled] ||= false
     end
 
+    def active=(value)
+      RequestStore.store[:visual_i18n_enabled] = value
+    end
 
   end
 end
+
+VisualI18n
