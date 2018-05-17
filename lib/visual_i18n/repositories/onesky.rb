@@ -6,12 +6,13 @@ module VisualI18n
         'Onesky'
       end
 
-      def self.build_link(keys, code: nil)
-        new.phrase_url(keys, code: code.to_s)
+      def self.build_link(keys, locale: nil)
+        new.phrase_url(keys, locale: locale.to_s)
       end
 
-      def phrase_url(keys, code: nil)
-        "#{base_url}/#{project_id}/language/#{lang_id(code)}#/?keyword=#{keys.join('.')}"
+      def phrase_url(keys, locale: nil)
+        code = keys.join('.')
+        "#{base_url}/#{project_id}/language/#{lang_id(locale)}#/?keyword=#{code}"
       end
 
       private
@@ -19,10 +20,11 @@ module VisualI18n
       DEFAULT_LANG_ID = '1'.freeze
       LANGUAGE_FILE_PATH = 'lib/visual_i18n/repositories/onesky/languages_ids.yml'.freeze
 
-      delegate :onesky_project_id, :onesky_subdomain,
-               to: :config
-      alias project_id onesky_project_id
-      alias subdomain onesky_subdomain
+      delegate :project_id, :subdomain, to: :onesky_config
+
+      def onesky_config
+        config.onesky
+      end
 
       def config
         VisualI18n.config

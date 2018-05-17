@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails'
 
-  s.add_dependency 'onesky-rails'
   s.add_dependency 'request_store'
 
   # Development/Test dependencies

@@ -4,7 +4,7 @@ RSpec.describe VisualI18n do
   describe '#add_phrase' do
     it 'adds the phrase when correct arguments' do
       # TODO: described_class.add_phrase(keys: %i(foo bar), text: 'Hello World!')
-      VisualI18n.add_phrase(keys: %i(foo bar), text: 'Hello World!')
+      VisualI18n.add_phrase(keys: %i(foo bar), phrase: 'Hello World!')
 
       phrase = VisualI18n.phrases.first
       expect(phrase.code).to eq 'foo.bar'
@@ -13,7 +13,7 @@ RSpec.describe VisualI18n do
 
     it 'requires a keys argument' do
       expect do
-        VisualI18n.add_phrase(text: 'Hello World!')
+        VisualI18n.add_phrase(phrase: 'Hello World!')
       end.to raise_error(ArgumentError)
     end
 

@@ -12,14 +12,14 @@ module VisualI18n
 
       describe '#phrase_url' do
         it { expect(subject.phrase_url(%w[foo bar])).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(subject.phrase_url(%w[foo bar], code: 'BAD!!')).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(subject.phrase_url(%w[foo bar], code: 'es-ES')).to eq 'http://lol.lol/111/language/568#/?keyword=foo.bar' }
+        it { expect(subject.phrase_url(%w[foo bar], locale: 'BAD!!')).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
+        it { expect(subject.phrase_url(%w[foo bar], locale: 'es-ES')).to eq 'http://lol.lol/111/language/568#/?keyword=foo.bar' }
       end
 
       describe '#build_link' do
         it { expect(Onesky.build_link(%w[foo bar])).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(Onesky.build_link(%w[foo bar], code: 'BAD!!')).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(Onesky.build_link(%w[foo bar], code: 'es-ES')).to eq 'http://lol.lol/111/language/568#/?keyword=foo.bar' }
+        it { expect(Onesky.build_link(%w[foo bar], locale: 'BAD!!')).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
+        it { expect(Onesky.build_link(%w[foo bar], locale: 'es-ES')).to eq 'http://lol.lol/111/language/568#/?keyword=foo.bar' }
       end
     end
   end

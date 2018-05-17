@@ -1,12 +1,14 @@
 module VisualI18n
   class Config
 
-    attr_accessor :repository,
-                  :onesky_api_key, :onesky_api_secret, :onesky_project_id,
-                  :onesky_subdomain
+    attr_accessor :repository
 
     def initialize
       set_defaults!
+    end
+
+    def onesky
+      @onesky_config ||= OneSky.new
     end
 
     def set_defaults!
@@ -15,6 +17,12 @@ module VisualI18n
 
     def setup
       yield self
+    end
+
+    class OneSky
+
+      attr_accessor :project_id, :subdomain
+
     end
 
   end

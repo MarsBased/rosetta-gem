@@ -12,10 +12,10 @@ describe VisualI18n::Config do
   describe 'Setup' do
     it do
       subject.setup do |config|
-        config.onesky_project_id = 'Foo'
+        config.onesky.project_id = 'Foo'
         config.repository = VisualI18n::Repositories::FooBar
       end
-      expect(subject.onesky_project_id).to eq 'Foo'
+      expect(subject.onesky.project_id).to eq 'Foo'
       expect(subject.repository).to eq(VisualI18n::Repositories::FooBar)
     end
   end
