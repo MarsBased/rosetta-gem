@@ -1,15 +1,21 @@
-feature 'Show menu' do
-  before { visit root_path }
+require 'spec_helper'
 
-  context 'Local repository' do
-    scenario 'with page translations', js: true do
-      find('.open-phrases-menu-btn').click
+feature 'Translations menu' do
+  before { visit local_samples_path }
 
-      expect(page).to have_selector '.phrases-menu.open'
-      within '.phrases-menu' do
-        expect(page).to have_content 'Hello world!'
-        expect(page).to have_content 'Repository Local'
-      end
+  scenario 'open the menu', js: true do
+    find('.open-phrases-menu-btn').click
+
+    expect(page).to have_selector '.phrases-menu.open'
+    within '.phrases-menu' do
+      expect(page).to have_content 'Repository Local'
     end
+  end
+
+  scenario 'close the menu', js: true do
+    find('.open-phrases-menu-btn').click
+    find('.phrases-menu__closebtn').click
+
+    expect(page).to_not have_selector '.phrases-menu.open'
   end
 end

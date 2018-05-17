@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 module VisualI18n
   RSpec.describe Phrase do
     describe '#initialize' do
