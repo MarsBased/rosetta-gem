@@ -60,7 +60,7 @@ before_action :enable_rosetta, if: ->() { current_user.admin? }
 In order to show the menu with the translations you need to indicate where you want to render it. Usually this will be in your application's layout. Add this at the end of the body of your `layours/application.html.erb`:
 
 ```ruby
-<%= render 'rosetta/translate_menu' %>
+<%= render rosetta_menu %>
 ```
 
 ## Configuration
@@ -71,9 +71,9 @@ Example:
 ```ruby
 Rosetta.setup do |config|
   # OneSky repository config
-  config.repository = Rosetta::Repositories::Onesky
-  config.onesky.project_id = ENV['ONESKY_PROJECT_ID']
-  config.onesky.subdomain = ENV['ONESKY_SUBDOMAIN']
+  config.repository = Rosetta::Repositories::Onesky.new
+  config.repository.project_id = ENV['ONESKY_PROJECT_ID']
+  config.repository.subdomain = ENV['ONESKY_SUBDOMAIN']
 
   # Local repository config
   config.repository = Rosetta::Repositories::Local

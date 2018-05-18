@@ -41,7 +41,7 @@ module Rosetta
         allow(Rosetta).to receive(:enabled?).and_return(false)
       end
 
-      it 'stills return the translation' do
+      it 'still return the translation' do
         expect(I18n.translate('foo.bar')).to eq 'bar'
       end
 

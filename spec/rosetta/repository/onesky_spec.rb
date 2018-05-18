@@ -3,12 +3,12 @@ require 'spec_helper'
 module Rosetta
   module Repositories
     RSpec.describe Onesky do
-      let(:repository) {
+      let(:repository) do
         obj = described_class.new
         obj.project_id = '123'
         obj.subdomain = 'foo'
         obj
-      }
+      end
 
       it { expect(subject.label).to eq 'Onesky' }
       it { expect(subject.id).to eq 'onesky' }

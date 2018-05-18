@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Onesky repository' do
   before do
     ENV['ONESKY_PROJECT_ID'] = '123'
-    ENV['ONESKY_SUBDOMAIN'] = 'marsbased'
+    ENV['ONESKY_SUBDOMAIN'] = 'foo'
   end
   before { visit onesky_samples_path }
 
@@ -14,7 +14,7 @@ feature 'Onesky repository' do
       expect(page).to have_content 'Hello world!'
       expect(page).to have_content 'samples.index.hello'
       expect(page).to have_link(href:
-        'https://marsbased.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=samples.index.hello')
+        'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=samples.index.hello')
     end
   end
 end

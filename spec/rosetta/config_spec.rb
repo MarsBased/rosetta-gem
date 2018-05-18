@@ -3,30 +3,24 @@ require 'spec_helper'
 describe Rosetta::Config do
   subject { described_class.new }
 
-  before do
-    ENV.delete('GEM_EDITOR')
-    ENV.delete('VISUAL')
-    ENV.delete('EDITOR')
-  end
-
   describe 'Setup' do
     it do
       subject.setup do |config|
-        config.repository = Rosetta::Repositories::FooBar
+        config.repository = Rosetta::Repositories::FooBar.new
       end
-      expect(subject.repository).to eq(Rosetta::Repositories::FooBar)
+      expect(subject.repository.class).to eq Rosetta::Repositories::FooBar
     end
   end
 
   describe 'repository' do
     it 'sets the default repository to local' do
-      expect(subject.repository).to eq(Rosetta::Repositories::Local)
+      expect(subject.repository.class).to eq Rosetta::Repositories::Local
     end
 
     it 'allows to change the repository' do
-      subject.repository = Rosetta::Repositories::FooBar
+      subject.repository = Rosetta::Repositories::FooBar.new
 
-      expect(subject.repository).to eq(Rosetta::Repositories::FooBar)
+      expect(subject.repository.class).to eq Rosetta::Repositories::FooBar
     end
   end
 end

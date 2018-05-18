@@ -1,5 +1,6 @@
 class SamplesController < ApplicationController
 
+  # This active allow to load the roseta menu
   before_action :enable_rosetta
 
   def local

@@ -2,28 +2,21 @@ require 'spec_helper'
 
 RSpec.describe Rosetta do
   it '.setup' do
-    described_class.config.repository = Rosetta::Repositories::Local
+    described_class.config.repository = Rosetta::Repositories::Local.new
+    described_class.setup { |config| config.repository = Rosetta::Repositories::Onesky.new }
 
-    described_class.setup { |config| config.repository = Rosetta::Repositories::Onesky }
-
-    expect(described_class.config.repository).to eq Rosetta::Repositories::Onesky
+    expect(described_class.repository.class).to eq Rosetta::Repositories::Onesky
   end
 
   it '.repository' do
-    described_class.config.repository = Rosetta::Repositories::Onesky
+    described_class.config.repository = Rosetta::Repositories::Onesky.new
 
-    expect(described_class.repository).to eq Rosetta::Repositories::Onesky
-  end
-
-  it 'can be configured' do
-    described_class.config.repository = Rosetta::Repositories::Onesky
-
-    expect(described_class.config.repository).to eq Rosetta::Repositories::Onesky
+    expect(described_class.repository.class).to eq Rosetta::Repositories::Onesky
   end
 
   describe '.add_phrase' do
     it 'adds the phrase when correct arguments' do
-      allow(Rosetta::Repositories::Local).to receive(:build_link).and_return 'en.hello.world'
+      allow_any_instance_of(Rosetta::Repositories::Local).to receive(:build_link).and_return 'en.hello.world'
 
       described_class.add_phrase(keys: %i(foo bar), phrase: 'Hello World!')
 

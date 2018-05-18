@@ -4,6 +4,7 @@ module Rosetta
 
     included do
       helper_method :rosetta?
+      helper_method :rosetta_menu
     end
 
     def enable_rosetta
@@ -12,6 +13,10 @@ module Rosetta
 
     def rosetta?
       Rosetta.enabled?
+    end
+
+    def rosetta_menu
+      'rosetta/translate_menu'
     end
   end
 end

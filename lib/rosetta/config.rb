@@ -8,7 +8,7 @@ module Rosetta
     end
 
     def set_defaults!
-      @repository = Rosetta::Repositories::Local
+      @repository = Rosetta::Repositories::Local.new
     end
 
     def setup

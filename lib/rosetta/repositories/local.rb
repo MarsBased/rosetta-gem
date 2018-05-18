@@ -15,6 +15,8 @@ module Rosetta
         path && Pathname.new(path).relative_path_from(Rails.root)
       end
 
+      private
+
       def file_has_phrase?(filename, keys)
         type = File.extname(filename).tr('.', '').downcase
         return unless type == 'yml'
