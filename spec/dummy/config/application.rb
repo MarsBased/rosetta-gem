@@ -4,6 +4,8 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
+require 'rosetta'
+
 module Dummy
   class Application < Rails::Application
 
