@@ -19,7 +19,7 @@ module VisualI18n
       it 'adds the phrase' do
         I18n.translate('foo.bar')
 
-        expect(VisualI18n).to have_received(:add_phrase).with(keys: [:foo, :bar], phrase: 'bar')
+        expect(VisualI18n).to have_received(:add_phrase).with(keys: %i(foo bar), phrase: 'bar')
       end
 
       it 'does not add the phrase if it does not exist' do
@@ -38,7 +38,7 @@ module VisualI18n
 
     context 'disabled' do
       before do
-        allow(VisualI18n).to receive(:store_phrases?).and_return(false)
+        allow(VisualI18n).to receive(:enabled?).and_return(false)
       end
 
       it 'stills return the translation' do

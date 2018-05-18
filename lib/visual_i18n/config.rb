@@ -8,7 +8,7 @@ module VisualI18n
     end
 
     def onesky
-      @onesky_config ||= OneSky.new
+      @onesky ||= OneSky.new
     end
 
     def set_defaults!
@@ -50,5 +50,3 @@ module VisualI18n
 
   end
 end
-
-VisualI18n
