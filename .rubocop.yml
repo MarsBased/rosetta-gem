@@ -9,12 +9,13 @@ AllCops:
       - 'db/seeds.rb'
       - '.bundle/**/*'
       - 'vendor/**/*'
+      - 'spec/dummy/**/*'
 
 ################ Disable cops ############################
 Documentation:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 
 Style/CommandLiteral:
@@ -32,13 +33,16 @@ Style/FrozenStringLiteralComment:
 Style/Lambda:
   Enabled: false
 
+Style/ExpandPathArguments:
+  Enabled: false
+
 Rails/Delegate:
   Enabled: false
 
 Rails/OutputSafety:
   Enabled: false
 
-Style/FileName:
+Naming/FileName:
   Enabled: false
 
 ################ Enable cops #############################
@@ -76,10 +80,10 @@ Style/PercentLiteralDelimiters:
      '%W': '[]'
      '%x': '()'
 
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
 
-Style/VariableNumber:
+Naming/VariableNumber:
   EnforcedStyle: 'snake_case'
 
 Metrics/LineLength:
