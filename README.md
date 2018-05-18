@@ -8,6 +8,10 @@ When using regular translations, it shows the file where translation is so you c
 
 ![Screenshot](screenshot.png)
 
+## Dependencies
+
+Rosetta requires a Ruby version >= 2.3
+
 ## Repositories
 
 The phrases menu is different depending on the way you manage your translations. There are currently 2 repositories: Local (default) and OneSky
