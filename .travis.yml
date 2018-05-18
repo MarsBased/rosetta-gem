@@ -1,6 +1,7 @@
 language: ruby
 cache: bundler
 sudo: required
+dist: trusty
 rvm:
   - 2.2.10
   - 2.3.7
