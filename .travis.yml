@@ -2,8 +2,6 @@ language: ruby
 cache: bundler
 sudo: false
 rvm:
- - 2.0.0-p598
- - 2.1.10
  - 2.2.10
  - 2.3.7
  - 2.4.4
@@ -13,4 +11,4 @@ rvm:
 before_install:
   - gem update --system
 script:
-  - bundle exec rubocop && bundle exec rake
+  - bundle exec rubocop && bundle exec rspec spec
