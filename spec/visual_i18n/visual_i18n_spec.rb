@@ -46,17 +46,15 @@ RSpec.describe VisualI18n do
     end
   end
 
-  describe '.store_phrases?' do
-    it 'stores phrases when the collection is initialized' do
-      RequestStore.store[:used_phrases] = []
-
-      expect(described_class.store_phrases?).to be_truthy
+  describe '.enabled?' do
+    it '.enable' do
+      described_class.enable
+      expect(described_class.enabled?).to eq true
     end
 
-    pending 'does not store phrases when the collection is not initialized' do
-      RequestStore.store[:used_phrases] = nil
-
-      expect(described_class.store_phrases?).to be_falsey
+    it '.disable' do
+      described_class.disable
+      expect(described_class.enabled?).to eq false
     end
   end
 end

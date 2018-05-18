@@ -8,21 +8,44 @@ module VisualI18n
     end
 
     def onesky
-      @onesky_config ||= OneSky.new
+      @onesky ||= OneSky.new
     end
 
     def set_defaults!
       @repository = VisualI18n::Repositories::Local
-    end
-
-    def setup
-      yield self
+      disable
     end
 
     class OneSky
 
       attr_accessor :project_id, :subdomain
 
+    end
+
+    def setup
+      yield self
+    end
+
+    def enabled?
+      active
+    end
+
+    def enable
+      self.active = true
+    end
+
+    def disable
+      self.active = false
+    end
+
+    private
+
+    def active
+      RequestStore.store[:visual_i18n_enabled] ||= false
+    end
+
+    def active=(value)
+      RequestStore.store[:visual_i18n_enabled] = value
     end
 
   end

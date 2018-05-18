@@ -6,6 +6,7 @@ require 'visual_i18n/engine'
 require 'visual_i18n/i18n_with_stored_phrases'
 require 'visual_i18n/phrase'
 require 'visual_i18n/repository'
+require 'visual_i18n/controller_additions'
 
 require 'visual_i18n/repositories/local'
 require 'visual_i18n/repositories/onesky'
@@ -13,8 +14,8 @@ require 'visual_i18n/repositories/onesky'
 module VisualI18n
   class << self
 
-    delegate :setup, to: :config
-    delegate :repository, to: :config
+    delegate :repository, :setup, :enabled?, :enable, :disable,
+             to: :config
 
     def config
       @config ||= Config.new
@@ -30,10 +31,6 @@ module VisualI18n
 
     def phrases
       RequestStore.store[:used_phrases] ||= []
-    end
-
-    def store_phrases?
-      true
     end
 
     def locale
