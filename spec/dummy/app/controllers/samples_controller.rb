@@ -3,7 +3,7 @@ class SamplesController < ApplicationController
   before_action :initialize_visual_i18n
 
   def local
-    # Sampel of local configuration, this should be in a initializer
+    # Sample of local configuration, this should be in a initializer
     VisualI18n.setup do |config|
       config.repository = VisualI18n::Repositories::Local
     end
@@ -12,7 +12,7 @@ class SamplesController < ApplicationController
   end
 
   def onesky
-    # Sampel of onesky configuration, this should be in a initializer
+    # Sample of onesky configuration, this should be in a initializer
     VisualI18n.setup do |config|
       config.onesky.project_id = ENV['ONESKY_PROJECT_ID']
       config.onesky.subdomain = ENV['ONESKY_SUBDOMAIN']

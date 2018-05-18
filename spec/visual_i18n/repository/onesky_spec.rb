@@ -6,20 +6,39 @@ module VisualI18n
       subject { described_class.new }
 
       before(:each) do
-        described_class.any_instance.stub(:project_id).and_return('111')
-        described_class.any_instance.stub(:base_url).and_return('http://lol.lol')
+        VisualI18n.config.onesky.project_id = '123'
+        VisualI18n.config.onesky.subdomain = 'foo'
+      end
+
+      it { expect(described_class.label).to eq 'Onesky' }
+      it { expect(described_class.id).to eq 'onesky' }
+
+      describe '.build_link' do
+        subject { described_class.method(:build_link) }
+
+        its([%w[foo bar]]) do
+          is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=foo.bar'
+        end
+        its([%w[foo bar], locale: 'BAD!!']) do
+          is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=foo.bar'
+        end
+        its([%w[foo bar], locale: 'es-ES']) do
+          is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/568#/?keyword=foo.bar'
+        end
       end
 
       describe '#phrase_url' do
-        it { expect(subject.phrase_url(%w[foo bar])).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(subject.phrase_url(%w[foo bar], locale: 'BAD!!')).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(subject.phrase_url(%w[foo bar], locale: 'es-ES')).to eq 'http://lol.lol/111/language/568#/?keyword=foo.bar' }
-      end
+        subject { described_class.new.method(:phrase_url) }
 
-      describe '#build_link' do
-        it { expect(Onesky.build_link(%w[foo bar])).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(Onesky.build_link(%w[foo bar], locale: 'BAD!!')).to eq 'http://lol.lol/111/language/1#/?keyword=foo.bar' }
-        it { expect(Onesky.build_link(%w[foo bar], locale: 'es-ES')).to eq 'http://lol.lol/111/language/568#/?keyword=foo.bar' }
+        its([%w[foo bar]]) do
+          is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=foo.bar'
+        end
+        its([%w[foo bar], locale: 'BAD!!']) do
+          is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=foo.bar'
+        end
+        its([%w[foo bar], locale: 'es-ES']) do
+          is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/568#/?keyword=foo.bar'
+        end
       end
     end
   end
