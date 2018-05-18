@@ -41,11 +41,11 @@ module Rosetta
     end
 
     def enable
-      self.actived = true
+      self.actived   = true
     end
 
     def disable
-      self.actived = false
+      self.actived   = false
     end
 
     private
