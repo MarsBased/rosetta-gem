@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ['MarsBased']
   s.email       = ['hola@marsbased.com']
   s.homepage    = 'https://github.com/MarsBased/rosetta'
-  s.summary     = 'Summary of Rosetta.'
-  s.description = 'Description of Rosetta.'
+  s.summary     = 'Rosetta makes it easy for copy writers to edit the translations of your app.'
+  s.description = 'Rosetta makes it easy for copy writers to edit the translations of your app.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
