@@ -1,5 +1,6 @@
 require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
+require 'rspec/its'
 require 'capybara/rspec'
 
 Capybara.javascript_driver = :webkit
