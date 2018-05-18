@@ -1,6 +1,6 @@
 language: ruby
 cache: bundler
-sudo: false
+sudo: required
 rvm:
   - 2.2.10
   - 2.3.7
@@ -9,7 +9,6 @@ rvm:
  env:
    global:
      - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
-
 addons:
   apt:
     sources:
