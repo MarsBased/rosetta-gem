@@ -6,111 +6,190 @@
       position: fixed;
       z-index: 1000;
       top: 0;
+      font-family: Arial, Helvetica, sans-serif;
       left: -350px;
       background-color: #F5F5F5;
-      color: #686866;
       transition: 0.2s;
+      -webkit-box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
       box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
     }
+
     .phrases-menu.open{
       left: 0px;
     }
 
-    .phrases-menu__block {
-      color: #686866;
-      display: block;
-      text-decoration: none;
-      padding: 21px 0 14px;
-      transition: 0.3s;
-      margin: 0 10px;
+    .phrases-menu__header {
+      height: 45px;
+      position: relative;
     }
-    .phrases-menu__block:hover {
-      color: #e74c3c;
-    }
-    .phrases-menu__block:not(:first-child) {
-       border-top: 1px solid #dfdfdf;
+
+    .phrases-menu__content {
+      height: calc(100% - 46px);
+      padding: 2px 0 12px 0;
+      overflow: auto;
+      box-sizing: border-box;
     }
 
     .phrases-menu__title{
       margin: 0;
       padding: 12px 9px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 24px;
-      font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
-      font-weight: 400;
+      font-size: 18px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #dedede;
     }
+
+    .phrases-menu__block {
+      color: #000000;
+      display: block;
+      text-decoration: none;
+      padding: 10px 10px;
+      transition: 0.3s;
+      font-size: 12px;
+      margin: 10px 10px 0px 10px;
+      border-radius: 3px;
+      background: #ffffff;
+      border: 1px solid #dedede;
+    }
+
+    .phrases-menu:not(.local) .phrases-menu__block:hover {
+      color: #e81d08;
+      cursor: pointer;
+      border: 1px solid #e81d08;
+      text-decoration: none;
+    }
+
     .phrases-menu__key{
-      font-size: 11px;
-      font-family: Verdana;
+      font-size: 12px;
       font-weight: 900;
       margin-bottom: 11px;
     }
+
     .phrases-menu__phrase{
-       font-size: 11px;
-       font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+       font-size: 13px;
+       margin-bottom: 11px;
     }
 
-    .phrases-menu__block:hover {
+    .phrases-menu__phrase:last-child{
+       margin-bottom: 0;
     }
 
-    .phrases-menu__closebtn {
-       position: absolute;
-       top: 0;
-       right: 10px;
-       font-size: 36px;
-       margin-left: 50px;
-       text-decoration: none;
-       color: #686866;
-    }
-    .phrases-menu__closebtn:hover{
-      color: #686866;
+    .phrases-menu__path{
+       font-size: 12px;
+       color: #9a9a9a;
+       transition: 0.3s;
     }
 
-    /* open-phrases-menu-btn */
+    .phrases-menu:not(.local) .phrases-menu__block:hover .phrases-menu__path {
+      color: #e81d08;
+    }
+
+    .phrases-menu__footer {
+      text-align: center;
+      max-width: 75%;
+      margin: 25px auto 0;
+    }
+
+    .phrases-menu__footer h1 {
+      font-size: 18px;
+      color: #7b7b7b;
+    }
+
+    .phrases-menu__footer p {
+      font-size: 12px;
+      color: #9a9a9a;
+      line-height: 1.4;
+    }
+
+    .phrases-menu__footer a {
+      color: inherit;
+    }
+
+    .phrases-menu__footer a:hover {
+      color: #e81d08;
+    }
+
     .open-phrases-menu-btn{
       background-color: #F5F5F5;
       color: #686866;
-      padding: 7px 7px 8px 8px;
-      box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 4px 3px 5px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 4px 3px 5px 0 rgba(0, 0, 0, 0.2);
       display: block;
-      width: 38px;
-      /* opacity: 0.5; */
       position: absolute;
-      right: -52px;
+      right: -55px;
+      height: 45px;
+      width: 55px;
+      border-radius: 0 0 3px 0;
       top: 0px;
+      cursor: pointer;
     }
-    .open .open-phrases-menu-btn{
-      /* opacity: 1; */
+
+    .phrases-menu__closebtn {
+       transition: 0.3s;
+       display: none;
     }
+
+    .phrases-menu.open .phrases-menu__closebtn {
+      display: block;
+    }
+
+    .phrases-menu.open .phrases-menu__openbtn {
+      display: none;
+    }
+
+    .phrases-menu__closebtn img {
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .phrases-menu__openbtn img {
+      height: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
   </style>
 
   <div id="phrasesMenu" class="phrases-menu <%= Rosetta.repository.id %>">
-    <div class="open-phrases-menu-btn" onclick="openNav()">
-      <%= image_tag('rosetta/language_icon.svg') %>
+    <div class="open-phrases-menu-btn" onclick="toggleNav()">
+      <div class="phrases-menu__openbtn">
+        <%= image_tag('rosetta/language_icon.svg') %>
+      </div>
+      <div class="phrases-menu__closebtn">
+        <%= image_tag('rosetta/close.svg') %>
+      </div>
     </div>
     <div class="phrases-menu__header">
-      <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()"><</a>
-
+      <h1 class="phrases-menu__title">
+        <%= Rosetta.repository.label %> <b>[<%= Rosetta.locale %>]</b>
+      </h1>
     </div>
-    <h1 class="phrases-menu__title">
-      <%= Rosetta.repository.label %> [<b><%= Rosetta.locale %>]</b>
-    </h1>
+    <div class="phrases-menu__content">
+      <% Rosetta.phrases.each do |phrase| %>
+        <%= render "rosetta/#{Rosetta.repository.id}/actions",
+                   phrase: phrase %>
+      <% end %>
 
-    <% Rosetta.phrases.each do |phrase| %>
-      <%= render "rosetta/#{Rosetta.repository.id}/actions",
-                 phrase: phrase %>
-    <% end %>
+      <div class="phrases-menu__footer">
+        <h1>Rosetta</h1>
+        <p>Rosetta is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
+        <p><a href="https://github.com/MarsBased/rosetta" target="_blank">View in Github</a></p>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript">
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-    function openNav() {
-        document.getElementById("phrasesMenu").classList.add("open");
-    }
-
-    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-    function closeNav() {
-        document.getElementById("phrasesMenu").classList.remove("open");
+    /* Toggle the Translate menu */
+    function toggleNav() {
+        document.getElementById("phrasesMenu").classList.toggle("open");
     }
   </script>
 <% end %>
