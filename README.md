@@ -86,7 +86,7 @@ Launch the dummy app with `rails s`.
 
 ![marsbased](https://marsbased.com/assets/marsbased-readme.svg)
 
-Visual I18n is maintained and funded by [MarsBased][marsbased]
+Rosetta is maintained and funded by [MarsBased][marsbased]
 
 The names and logos for MarsBased are trademarks of MarsBased.
 
