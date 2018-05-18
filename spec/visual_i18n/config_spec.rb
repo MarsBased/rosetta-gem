@@ -48,5 +48,4 @@ describe Rosetta::Config do
   end
 end
 
-module Rosetta
-  ; module Repositories; class FooBar; end end end
+module Rosetta; module Repositories; class FooBar; end end end
