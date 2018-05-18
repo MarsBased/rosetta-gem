@@ -2,12 +2,14 @@ module Rosetta
   module Repositories
     class Onesky < Rosetta::Repository
 
-      def self.label
+      attr_accessor :project_id, :subdomain
+
+      def label
         'Onesky'
       end
 
-      def self.build_link(keys, locale: nil)
-        new.phrase_url(keys, locale: locale.to_s)
+      def build_link(keys, locale: nil)
+        phrase_url(keys, locale: locale.to_s)
       end
 
       def phrase_url(keys, locale: nil)
@@ -19,16 +21,6 @@ module Rosetta
 
       DEFAULT_LANG_ID = '1'.freeze
       LANGUAGE_FILE_PATH = 'lib/rosetta/repositories/onesky/languages_ids.yml'.freeze
-
-      delegate :project_id, :subdomain, to: :onesky_config
-
-      def onesky_config
-        config.onesky
-      end
-
-      def config
-        Rosetta.config
-      end
 
       def base_url
         "https://#{subdomain}.oneskyapp.com/collaboration/translate/project/project"

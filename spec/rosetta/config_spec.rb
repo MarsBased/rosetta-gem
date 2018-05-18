@@ -13,11 +13,7 @@ describe Rosetta::Config do
     it do
       subject.setup do |config|
         config.repository = Rosetta::Repositories::FooBar
-        config.onesky.project_id = '123'
-        config.onesky.subdomain = 'foo'
       end
-      expect(subject.onesky.project_id).to eq '123'
-      expect(subject.onesky.subdomain).to eq 'foo'
       expect(subject.repository).to eq(Rosetta::Repositories::FooBar)
     end
   end

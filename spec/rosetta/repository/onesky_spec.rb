@@ -3,18 +3,18 @@ require 'spec_helper'
 module Rosetta
   module Repositories
     RSpec.describe Onesky do
-      subject { described_class.new }
+      let(:repository) {
+        obj = described_class.new
+        obj.project_id = '123'
+        obj.subdomain = 'foo'
+        obj
+      }
 
-      before(:each) do
-        Rosetta.config.onesky.project_id = '123'
-        Rosetta.config.onesky.subdomain = 'foo'
-      end
-
-      it { expect(described_class.label).to eq 'Onesky' }
-      it { expect(described_class.id).to eq 'onesky' }
+      it { expect(subject.label).to eq 'Onesky' }
+      it { expect(subject.id).to eq 'onesky' }
 
       describe '.build_link' do
-        subject { described_class.method(:build_link) }
+        subject { repository.method(:build_link) }
 
         its([%w[foo bar]]) do
           is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=foo.bar'
@@ -28,7 +28,7 @@ module Rosetta
       end
 
       describe '#phrase_url' do
-        subject { described_class.new.method(:phrase_url) }
+        subject { repository.method(:phrase_url) }
 
         its([%w[foo bar]]) do
           is_expected.to eq 'https://foo.oneskyapp.com/collaboration/translate/project/project/123/language/1#/?keyword=foo.bar'

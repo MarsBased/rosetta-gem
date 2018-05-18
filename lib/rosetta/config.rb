@@ -15,15 +15,5 @@ module Rosetta
       yield self
     end
 
-    def onesky
-      @onesky ||= OneSky.new
-    end
-
-    class OneSky
-
-      attr_accessor :project_id, :subdomain
-
-    end
-
   end
 end

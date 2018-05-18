@@ -2,20 +2,20 @@ module Rosetta
   module Repositories
     class Local < Rosetta::Repository
 
-      def self.id
+      def id
         'local'
       end
 
-      def self.label
+      def label
         'Repository Local'
       end
 
-      def self.build_link(keys, **_args)
+      def build_link(keys, **_args)
         path = I18n.load_path.flatten.find { |filename| file_has_phrase?(filename, keys) }
         path && Pathname.new(path).relative_path_from(Rails.root)
       end
 
-      def self.file_has_phrase?(filename, keys)
+      def file_has_phrase?(filename, keys)
         type = File.extname(filename).tr('.', '').downcase
         return unless type == 'yml'
 
@@ -28,12 +28,12 @@ module Rosetta
       end
 
       # rubocop:disable Style/Send
-      def self.file_translations(filename)
+      def file_translations(filename)
         translations[filename] ||= I18n.backend.send(:load_yml, filename)
       end
       # rubocop:enable Style/Send
 
-      def self.translations
+      def translations
         @translations ||= {}
       end
 
