@@ -33,19 +33,6 @@ describe Rosetta::Config do
       expect(subject.repository).to eq(Rosetta::Repositories::FooBar)
     end
   end
-
-  describe '#set_defaults!' do
-    describe 'deactive' do
-      it do
-        expect(subject.enabled?).to eq false
-        subject.enable
-        expect(subject.enabled?).to eq true
-
-        subject.set_defaults!
-        expect(subject.enabled?).to eq false
-      end
-    end
-  end
 end
 
 module Rosetta; module Repositories; class FooBar; end end end
