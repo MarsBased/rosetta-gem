@@ -6,7 +6,7 @@ It is especially useful if you use the [OneSky translation service](https://www.
 
 When using regular translations, it shows the file where translation is so you can more easily find and edit it.
 
-[TODO: add screenshot when design]
+![Screenshot](screenshot.png)
 
 ## Repositories
 
@@ -35,6 +35,8 @@ gem 'rosetta', '~> 1.0'
 
 and run the `bundle install` command.
 
+To generate the initializer file run `rails g rosetta:install`
+
 ## Getting Started
 
 ### 1. Enable the library
@@ -57,7 +59,7 @@ In order to show the menu with the translations you need to indicate where you w
 
 ## Configuration
 
-You can configure the library using an initializer.
+You can configure the library through the initializer.
 
 Example:
 ```ruby
