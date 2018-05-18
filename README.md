@@ -1,5 +1,7 @@
 # Rosetta
 
+[![Build Status](https://travis-ci.org/MarsBased/rosetta.svg?branch=master)](https://travis-ci.org/MarsBased/rosetta)
+
 Rosetta is a library for Rails that helps you identify the translations that are being used on your app pages. The library adds an expandable menu to each page that shows all phrases being used in the page along with additional info depending on the [Repository](#repositories) used.
 
 It is especially useful if you use the [OneSky translation service](https://www.oneskyapp.com/) since it gives you direct links to edit the translations on OneSky. This makes it easy for copy writers of your app to see the texts in context and edit the translations.
