@@ -1,6 +1,6 @@
-module VisualI18n
+module Rosetta
   module Repositories
-    class Onesky < VisualI18n::Repository
+    class Onesky < Rosetta::Repository
 
       def self.label
         'Onesky'
@@ -18,7 +18,7 @@ module VisualI18n
       private
 
       DEFAULT_LANG_ID = '1'.freeze
-      LANGUAGE_FILE_PATH = 'lib/visual_i18n/repositories/onesky/languages_ids.yml'.freeze
+      LANGUAGE_FILE_PATH = 'lib/rosetta/repositories/onesky/languages_ids.yml'.freeze
 
       delegate :project_id, :subdomain, to: :onesky_config
 
@@ -27,7 +27,7 @@ module VisualI18n
       end
 
       def config
-        VisualI18n.config
+        Rosetta.config
       end
 
       def base_url

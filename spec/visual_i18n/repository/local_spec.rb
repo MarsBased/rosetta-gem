@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module VisualI18n
+module Rosetta
   module Repositories
     RSpec.describe Local do
       subject { described_class.new }

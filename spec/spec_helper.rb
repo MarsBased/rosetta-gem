@@ -9,8 +9,8 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers
 
   config.before(:each) do
-    VisualI18n.config.set_defaults!
-    VisualI18n.enable
+    Rosetta.config.set_defaults!
+    Rosetta.enable
   end
 end
 

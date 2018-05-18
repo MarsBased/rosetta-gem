@@ -1,17 +1,17 @@
 require 'i18n'
 require 'request_store'
 
-require 'visual_i18n/config'
-require 'visual_i18n/engine'
-require 'visual_i18n/i18n_with_stored_phrases'
-require 'visual_i18n/phrase'
-require 'visual_i18n/repository'
-require 'visual_i18n/controller_additions'
+require 'rosetta/config'
+require 'rosetta/engine'
+require 'rosetta/i18n_with_stored_phrases'
+require 'rosetta/phrase'
+require 'rosetta/repository'
+require 'rosetta/controller_additions'
 
-require 'visual_i18n/repositories/local'
-require 'visual_i18n/repositories/onesky'
+require 'rosetta/repositories/local'
+require 'rosetta/repositories/onesky'
 
-module VisualI18n
+module Rosetta
   class << self
 
     delegate :repository, :setup, :enabled?, :enable, :disable,
@@ -43,7 +43,7 @@ end
 module I18n
   class << self
 
-    prepend VisualI18n::I18nWithStoredPhrases
+    prepend Rosetta::I18nWithStoredPhrases
 
   end
 end

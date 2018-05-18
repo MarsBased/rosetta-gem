@@ -1,4 +1,4 @@
-module VisualI18n
+module Rosetta
   class Config
 
     attr_accessor :repository
@@ -12,7 +12,7 @@ module VisualI18n
     end
 
     def set_defaults!
-      @repository = VisualI18n::Repositories::Local
+      @repository = Rosetta::Repositories::Local
       disable
     end
 
@@ -41,11 +41,11 @@ module VisualI18n
     private
 
     def active
-      RequestStore.store[:visual_i18n_enabled] ||= false
+      RequestStore.store[:rosetta_enabled] ||= false
     end
 
     def active=(value)
-      RequestStore.store[:visual_i18n_enabled] = value
+      RequestStore.store[:rosetta_enabled] = value
     end
 
   end
