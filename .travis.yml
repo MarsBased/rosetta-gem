@@ -7,9 +7,9 @@ rvm:
   - 2.3.7
   - 2.4.4
   - 2.5.1
- env:
-   global:
-     - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+env:
+  global:
+    - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 addons:
   apt:
     sources:
