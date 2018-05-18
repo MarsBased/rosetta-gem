@@ -19,4 +19,4 @@ addons:
 before_install:
    - gem update --system
 script:
-   - bundle exec rubocop && bundle exec rspec spec
+   - bundle exec rubocop && xvfb-run bundle exec rspec spec
