@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module VisualI18n
+module Rosetta
   RSpec.describe Phrase do
     describe '#initialize' do
       let(:phrase) { Phrase.new(%i(foo bar foobar), 'Some text', '/a/path/') }

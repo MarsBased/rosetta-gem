@@ -1,15 +1,15 @@
 $:.push File.expand_path('lib', __dir__)
 
-require 'visual_i18n/version'
+require 'rosetta/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'visual-i18n'
-  s.version     = VisualI18n::VERSION
+  s.name        = 'Rosetta'
+  s.version     = Rosetta::VERSION
   s.authors     = ['MarsBased']
   s.email       = ['hola@marsbased.com']
-  s.homepage    = 'https://github.com/MarsBased/visual-i18n'
-  s.summary     = 'Summary of VisualI18n.'
-  s.description = 'Description of VisualI18n.'
+  s.homepage    = 'https://github.com/MarsBased/rosetta'
+  s.summary     = 'Summary of Rosetta.'
+  s.description = 'Description of Rosetta.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']

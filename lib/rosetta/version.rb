@@ -1,3 +1,3 @@
-module VisualI18n
+module Rosetta
   VERSION = '0.0.1'.freeze
 end

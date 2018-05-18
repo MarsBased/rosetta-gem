@@ -1,6 +1,6 @@
-module VisualI18n
+module Rosetta
   module Repositories
-    class Local < VisualI18n::Repository
+    class Local < Rosetta::Repository
 
       def self.id
         'local'

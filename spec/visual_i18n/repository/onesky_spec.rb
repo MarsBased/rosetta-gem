@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-module VisualI18n
+module Rosetta
   module Repositories
     RSpec.describe Onesky do
       subject { described_class.new }
 
       before(:each) do
-        VisualI18n.config.onesky.project_id = '123'
-        VisualI18n.config.onesky.subdomain = 'foo'
+        Rosetta.config.onesky.project_id = '123'
+        Rosetta.config.onesky.subdomain = 'foo'
       end
 
       it { expect(described_class.label).to eq 'Onesky' }

@@ -1,4 +1,4 @@
-module VisualI18n
+module Rosetta
   class Repository
 
     def self.id

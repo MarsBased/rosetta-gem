@@ -1,11 +1,11 @@
 # As a sample of how to configure the gem
 
-VisualI18n.setup do |config|
+Rosetta.setup do |config|
   # OneSky repository config
-  # config.repository = VisualI18n::Repositories::Onesky
+  # config.repository = Rosetta::Repositories::Onesky
   # config.onesky.project_id = ENV['ONESKY_PROJECT_ID']
   # config.onesky.subdomain = ENV['ONESKY_SUBDOMAIN']
 
   # Local repository config
-  # config.repository = VisualI18n::Repositories::Local
+  # config.repository = Rosetta::Repositories::Local
 end

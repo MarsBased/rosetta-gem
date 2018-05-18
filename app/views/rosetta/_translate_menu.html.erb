@@ -1,4 +1,4 @@
-<% if visual_i18n? %>
+<% if rosetta? %>
   <style>
     .phrases-menu {
       height: 100%;
@@ -84,20 +84,20 @@
     }
   </style>
 
-  <div id="phrasesMenu" class="phrases-menu <%= VisualI18n.repository.id %>">
+  <div id="phrasesMenu" class="phrases-menu <%= Rosetta.repository.id %>">
     <div class="open-phrases-menu-btn" onclick="openNav()">
-      <%= image_tag('visual_i18n/language_icon.svg') %>
+      <%= image_tag('rosetta/language_icon.svg') %>
     </div>
     <div class="phrases-menu__header">
       <a href="javascript:void(0)" class="phrases-menu__closebtn" onclick="closeNav()"><</a>
 
     </div>
     <h1 class="phrases-menu__title">
-      <%= VisualI18n.repository.label %> [<b><%= VisualI18n.locale %>]</b>
+      <%= Rosetta.repository.label %> [<b><%= Rosetta.locale %>]</b>
     </h1>
 
-    <% VisualI18n.phrases.each do |phrase| %>
-      <%= render "visual_i18n/#{VisualI18n.repository.id}/actions",
+    <% Rosetta.phrases.each do |phrase| %>
+      <%= render "rosetta/#{Rosetta.repository.id}/actions",
                  phrase: phrase %>
     <% end %>
   </div>
