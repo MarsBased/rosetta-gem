@@ -37,25 +37,25 @@ module Rosetta
     end
 
     def enabled?
-      actived
+      enabled
     end
 
     def enable
-      self.actived   = true
+      self.enabled = true
     end
 
     def disable
-      self.actived   = false
+      self.enabled = false
     end
 
     private
 
-    def actived
-      request[:actived].nil? ? false : request[:actived]
+    def enabled
+      request[:enabled].nil? ? false : request[:enabled]
     end
 
-    def actived=(value)
-      request[:actived] = value
+    def enabled=(value)
+      request[:enabled] = value
     end
 
     def request
