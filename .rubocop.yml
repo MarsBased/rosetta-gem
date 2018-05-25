@@ -9,6 +9,8 @@ AllCops:
       - 'db/seeds.rb'
       - '.bundle/**/*'
       - 'vendor/**/*'
+      - 'spec/dummy/**/*'
+      - '*.gemspec'
 
 ################ Disable cops ############################
 Documentation:
@@ -32,13 +34,16 @@ Style/FrozenStringLiteralComment:
 Style/Lambda:
   Enabled: false
 
+Style/ExpandPathArguments:
+  Enabled: false
+
 Rails/Delegate:
   Enabled: false
 
 Rails/OutputSafety:
   Enabled: false
 
-Rails/SkipsModelValidations:
+Naming/FileName:
   Enabled: false
 
 ################ Enable cops #############################
@@ -64,12 +69,6 @@ Style/RegexpLiteral:
 Style/SignalException:
   EnforcedStyle: semantic
 
-Style/IfUnlessModifier:
-  MaxLineLength: 60
-
-Style/WhileUntilModifier:
-  MaxLineLength: 60
-
 Style/PercentLiteralDelimiters:
    PreferredDelimiters:
      '%':  '()'
@@ -85,8 +84,13 @@ Style/PercentLiteralDelimiters:
 Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
 
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'
+
 Metrics/LineLength:
   Max: 90
+  Exclude:
+    - spec/**/*
 
 Metrics/AbcSize:
   Max: 22
@@ -105,9 +109,6 @@ Metrics/ClassLength:
 
 Metrics/ModuleLength:
   Max: 150
-
-Naming/VariableNumber:
-  EnforcedStyle: 'snake_case'
 
 # ActiveAdmin, some config files (like rails environments or simple form) and the Rspec
 # specs use large blocks that we shouldn't consider as problems.

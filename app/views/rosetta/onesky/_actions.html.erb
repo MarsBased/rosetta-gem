@@ -1,0 +1,11 @@
+<%= link_to(phrase.repository_link, target: '_blank', class: 'phrases-menu__block')  do %>
+  <div class="phrases-menu__actions">
+    <div class="phrases-menu__key">
+      <%= phrase.code %>
+    </div>
+
+    <div class="phrases-menu__phrase">
+      <%= phrase.text %>
+    </div>
+  </div>
+<% end %>

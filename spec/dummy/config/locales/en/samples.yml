@@ -1,0 +1,6 @@
+en:
+  samples:
+    sample_partial:
+      some_text: "This is text in a sample partial"
+    index:
+      hello: "Hello world!!"
