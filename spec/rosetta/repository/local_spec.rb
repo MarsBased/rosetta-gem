@@ -5,8 +5,8 @@ module Rosetta
     RSpec.describe Local do
       subject { described_class.new }
 
-      it { expect(described_class.label).to eq 'Repository Local' }
-      it { expect(described_class.id).to eq 'local' }
+      it { expect(subject.label).to eq 'Repository Local' }
+      it { expect(subject.id).to eq 'local' }
 
       describe '.build_link' do
         context 'with an invalid file' do
@@ -16,13 +16,13 @@ module Rosetta
 
           it 'raises an exception' do
             expect do
-              described_class.build_link(%w[not_found])
+              subject.build_link(%w[not_found])
             end.to raise_error(I18n::InvalidLocaleData)
           end
         end
 
         it 'returns the file where the translation is stored' do
-          expect(described_class.build_link(%w[common text]).to_s).to eq 'config/locales/en/common.yml'
+          expect(subject.build_link(%w[common text]).to_s).to eq 'config/locales/en/common.yml'
         end
       end
     end

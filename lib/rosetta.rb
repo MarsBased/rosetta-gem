@@ -14,8 +14,7 @@ require 'rosetta/repositories/onesky'
 module Rosetta
   class << self
 
-    delegate :repository, :setup, :enabled?, :enable, :disable,
-             to: :config
+    delegate :repository, :setup, to: :config
 
     def config
       @config ||= Config.new
@@ -30,11 +29,37 @@ module Rosetta
     end
 
     def phrases
-      RequestStore.store[:used_phrases] ||= []
+      request[:used_phrases] ||= []
     end
 
     def locale
       I18n.locale
+    end
+
+    def enabled?
+      enabled
+    end
+
+    def enable
+      self.enabled = true
+    end
+
+    def disable
+      self.enabled = false
+    end
+
+    private
+
+    def enabled
+      request[:enabled].nil? ? false : request[:enabled]
+    end
+
+    def enabled=(value)
+      request[:enabled] = value
+    end
+
+    def request
+      RequestStore.store[:rosetta] ||= {}
     end
 
   end

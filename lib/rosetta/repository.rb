@@ -1,15 +1,15 @@
 module Rosetta
   class Repository
 
-    def self.id
+    def id
       label.demodulize.parameterize
     end
 
-    def self.label
+    def label
       name
     end
 
-    def self.build_link(_keys, **_args)
+    def build_link(_keys, **_args)
       fail NotImplementedError
     end
 
