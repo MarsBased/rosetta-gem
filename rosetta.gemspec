@@ -3,7 +3,7 @@ $:.push File.expand_path('lib', __dir__)
 require 'rosetta/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'Rosetta'
+  s.name        = 'rosetta'
   s.version     = Rosetta::VERSION
   s.authors     = ['MarsBased']
   s.email       = ['hola@marsbased.com']
