@@ -3,20 +3,23 @@ cache: bundler
 sudo: required
 dist: trusty
 rvm:
-  - 2.3.7
-  - 2.4.4
-  - 2.5.1
+- 2.3.7
+- 2.4.4
+- 2.5.1
 env:
   global:
-    - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+  - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 addons:
   apt:
     sources:
-      - ubuntu-sdk-team
+    - ubuntu-sdk-team
     packages:
-      - libqt5webkit5-dev
-      - qtdeclarative5-dev
+    - libqt5webkit5-dev
+    - qtdeclarative5-dev
 before_install:
-   - gem update --system
+- gem update --system
 script:
-   - bundle exec rubocop && xvfb-run bundle exec rspec spec
+- bundle exec rubocop && xvfb-run bundle exec rspec spec
+notifications:
+  slack:
+    secure: TSB2j4WD1P3bYzMCaBtkPGr8qoPJpKEo54u7Y1KDmw7AZPrt6jqyX1Yr5w3Lx6YtK74xTvW6HVgHsH0tedt/VbbV5473/F0Rgwo55wb4DJun9HJKd+7Asz27r/zRknM09lF/obepnHACFEPrZj2mbu9jF0jYofIC1+CC+uhW70N+O2WhrHQrLZTaAemM9dC4IxEx2I6UYNJ6F1QJhlGU3RfWhwqQ77Ravmztg0qOsNiA8wggGoGnLKG3EMOwh+JGOwHRWUIWo2cOGeailwZrKg1arDYrMYbX8jT3z5+pehETTxEH7J7RDfM2XF+xc+98jVmtz9liIjnmE3v7YIklXLwK37DHvkexbYLa4T0JlAbQuY5unRB9Y4eKxF/3L74lmvDvf+SqU0EwucnflwI0kUBCoMpH9FeirPIbmoIfakMtSUQxzsYLHgWWUwYsWTCzZxbt6bYdijJvsTWlMFRyD+dMXctiL/xaKMQrCKOAkV3TN5YGhf9x5LQIyi74JTtuxR+FsTeZYGqF/ttfqkcir+6KjdHYZAfkeMh6O8Yzv73FIQPWAvhKNC8UdISTMYVgssGq7xQ036i0p2hbML5oyYrTXPy+5hpTEdpYQ+ycM61ud75eDe+13a3nQfZhr4MZVc7oUijzEz1uGIHcFwY5oiYy5u9RaJZd5jUYkghM6n8=
