@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.sameple-wrapper{
+  width: 500px;
+  margin: 10px auto;
+}

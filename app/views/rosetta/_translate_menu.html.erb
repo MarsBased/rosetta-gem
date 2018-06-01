@@ -51,6 +51,10 @@
       border: 1px solid #dedede;
     }
 
+    .phrases-menu__block.hide{
+      display: none;
+    }
+
     .phrases-menu:not(.local) .phrases-menu__block:hover {
       color: #e81d08;
       cursor: pointer;
@@ -146,6 +150,12 @@
       transform: translate(-50%, -50%);
     }
 
+    .phrases-menu__search{
+      font-size: 14px;
+      padding: 9px 16px;
+      color: #807e7e;
+    }
+
     .phrases-menu__openbtn img {
       height: 30px;
       position: absolute;
@@ -173,6 +183,7 @@
       </h1>
     </div>
     <div class="phrases-menu__content">
+      <div class="phrases-menu__search"></div>
       <% Rosetta.phrases.each do |phrase| %>
         <%= render "rosetta/#{Rosetta.repository.id}/actions",
                    phrase: phrase %>
@@ -188,6 +199,22 @@
 
   <script type="text/javascript">
     /* Toggle the Translate menu */
+    $( document ).ready(function() {
+      var searchSelectedText = function(){
+        var text = window.getSelection().toString();
+        if (text != ''){
+          $('.phrases-menu__block').addClass('hide');
+          $( "div:contains('"+text+"')" ).parent('.phrases-menu__block').removeClass('hide');
+          $('.phrases-menu__search').html('<u>Search</u>: ' + text);
+        }else{
+          $('.phrases-menu__block').removeClass('hide');
+          $('.phrases-menu__search').html('');
+        }
+      }
+      $('*').mouseup(function() {
+        searchSelectedText();
+      });
+    });
     function toggleNav() {
       document.getElementById("phrasesMenu").classList.toggle("open");
     }

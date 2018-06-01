@@ -9,19 +9,21 @@
   </head>
 
   <body>
-    <div class="options-selector">
-      <b>Repositories: </b>
-      <%= link_to 'Local', local_samples_path %> |
-      <%= link_to 'OneSky', onesky_samples_path %>
-    </div>
+    <div class="sameple-wrapper">
+      <div class="options-selector">
+        <b>Repositories: </b>
+        <%= link_to 'Local', local_samples_path %> |
+        <%= link_to 'OneSky', onesky_samples_path %>
+      </div>
 
-    <div class="options-selector">
-      <b>Languages: </b>
-      <%= link_to 'English', { locale: 'en' } %> |
-      <%= link_to 'Spanish', { locale: 'es-ES' } %>
-    </div>
+      <div class="options-selector">
+        <b>Languages: </b>
+        <%= link_to 'English', { locale: 'en' } %> |
+        <%= link_to 'Spanish', { locale: 'es-ES' } %>
+      </div>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
 
     <%= render rosetta_menu %>
   </body>
