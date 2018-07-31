@@ -14,6 +14,14 @@
       box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
     }
 
+    .phrases-menu.match-phrase {
+      background-color: #eaffdd;
+    }
+
+    .phrases-menu.unmatch-phrase {
+      background-color: #fae0dd;
+    }
+
     .phrases-menu.open{
       left: 0px;
     }
@@ -203,12 +211,22 @@
       var searchSelectedText = function(){
         var text = window.getSelection().toString();
         if (text != ''){
+          var $matches = $( "div:contains('"+text+"')" );
           $('.phrases-menu__block').addClass('hide');
-          $( "div:contains('"+text+"')" ).parent('.phrases-menu__block').removeClass('hide');
+          $matches.parent('.phrases-menu__block').removeClass('hide');
           $('.phrases-menu__search').html('<u>Search</u>: ' + text);
+          debugger;
+          if($matches.length > 0){
+            $('.phrases-menu').addClass('match-phrase');
+          }else{
+            $('.phrases-menu').addClass('unmatch-phrase');
+            $('.phrases-menu').removeClass('match-phrase');
+          }
         }else{
           $('.phrases-menu__block').removeClass('hide');
           $('.phrases-menu__search').html('');
+          $('.phrases-menu').removeClass('unmatch-phrase');
+          $('.phrases-menu').removeClass('match-phrase');
         }
       }
       $('*').mouseup(function() {
