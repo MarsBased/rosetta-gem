@@ -14,11 +14,16 @@
       box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
     }
 
-    .phrases-menu.match-phrase {
+    .phrases-menu.match-phrase,
+    .phrases-menu.match-phrase .open-phrases-menu-btn {
       background-color: #eaffdd;
     }
+    .phrases-menu.match-phrase .phrases-menu__block{
+      background-color: #f7fff3;
+    }
 
-    .phrases-menu.unmatch-phrase {
+    .phrases-menu.unmatch-phrase,
+    .phrases-menu.unmatch-phrase .open-phrases-menu-btn {
       background-color: #fae0dd;
     }
 
@@ -211,11 +216,12 @@
       var searchSelectedText = function(){
         var text = window.getSelection().toString();
         if (text != ''){
-          var $matches = $( "div:contains('"+text+"')" );
+          var $matches = $( "div:contains('"+text+"')" ).parent('.phrases-menu__block');
+
           $('.phrases-menu__block').addClass('hide');
-          $matches.parent('.phrases-menu__block').removeClass('hide');
+          $matches.removeClass('hide');
           $('.phrases-menu__search').html('<u>Search</u>: ' + text);
-          debugger;
+          
           if($matches.length > 0){
             $('.phrases-menu').addClass('match-phrase');
           }else{
