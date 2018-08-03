@@ -14,6 +14,19 @@
       box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.2);
     }
 
+    .phrases-menu.match-phrase,
+    .phrases-menu.match-phrase .open-phrases-menu-btn {
+      background-color: #eaffdd;
+    }
+    .phrases-menu.match-phrase .phrases-menu__block{
+      background-color: #f7fff3;
+    }
+
+    .phrases-menu.unmatch-phrase,
+    .phrases-menu.unmatch-phrase .open-phrases-menu-btn {
+      background-color: #fae0dd;
+    }
+
     .phrases-menu.open{
       left: 0px;
     }
@@ -49,6 +62,10 @@
       border-radius: 3px;
       background: #ffffff;
       border: 1px solid #dedede;
+    }
+
+    .phrases-menu__block.hide{
+      display: none;
     }
 
     .phrases-menu:not(.local) .phrases-menu__block:hover {
@@ -146,6 +163,12 @@
       transform: translate(-50%, -50%);
     }
 
+    .phrases-menu__search{
+      font-size: 14px;
+      padding: 9px 16px;
+      color: #807e7e;
+    }
+
     .phrases-menu__openbtn img {
       height: 30px;
       position: absolute;
@@ -173,6 +196,7 @@
       </h1>
     </div>
     <div class="phrases-menu__content">
+      <div class="phrases-menu__search"></div>
       <% Rosetta.phrases.each do |phrase| %>
         <%= render "rosetta/#{Rosetta.repository.id}/actions",
                    phrase: phrase %>
@@ -188,6 +212,33 @@
 
   <script type="text/javascript">
     /* Toggle the Translate menu */
+    $( document ).ready(function() {
+      var searchSelectedText = function(){
+        var text = window.getSelection().toString();
+        if (text != ''){
+          var $matches = $( "div:contains('"+text+"')" ).parent('.phrases-menu__block');
+
+          $('.phrases-menu__block').addClass('hide');
+          $matches.removeClass('hide');
+          $('.phrases-menu__search').html('<u>Search</u>: ' + text);
+          
+          if($matches.length > 0){
+            $('.phrases-menu').addClass('match-phrase');
+          }else{
+            $('.phrases-menu').addClass('unmatch-phrase');
+            $('.phrases-menu').removeClass('match-phrase');
+          }
+        }else{
+          $('.phrases-menu__block').removeClass('hide');
+          $('.phrases-menu__search').html('');
+          $('.phrases-menu').removeClass('unmatch-phrase');
+          $('.phrases-menu').removeClass('match-phrase');
+        }
+      }
+      $('*').mouseup(function() {
+        searchSelectedText();
+      });
+    });
     function toggleNav() {
       document.getElementById("phrasesMenu").classList.toggle("open");
     }
