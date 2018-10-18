@@ -163,6 +163,12 @@
       transform: translate(-50%, -50%);
     }
 
+    .phrases-menu__intro {
+      padding-left: 16px;
+      margin-bottom: 0;
+      font-size: 14px
+    }
+
     .phrases-menu__search{
       font-size: 14px;
       padding: 9px 16px;
@@ -201,6 +207,9 @@
       </h1>
     </div>
     <div class="phrases-menu__content">
+      <p class="phrases-menu__intro">
+        Select any text in the page to search the corresponding translation.
+      </p>
       <div class="phrases-menu__search"></div>
       <% Rosetta.phrases.each do |phrase| %>
         <%= render "rosetta/#{Rosetta.repository.id}/actions",
