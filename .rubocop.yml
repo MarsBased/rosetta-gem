@@ -28,9 +28,6 @@ Style/FormatString:
 Style/SpecialGlobalVars:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Style/Lambda:
   Enabled: false
 
