@@ -1,0 +1,16 @@
+<div class="phrases-menu__header">
+  <h1 class="phrases-menu__title">
+    <%= Rosetta.repository.label %> <b>[<%= @selected_locale %>]</b>
+  </h1>
+</div>
+
+<div id="phrases-list">
+  <div v-for="phrase in phrases">
+    <%= render "rosetta/#{Rosetta.repository.id}/actions_vue" %>
+  </div>
+</div>
+
+<script type="application/javascript">
+  var phrases = <%= @phrases.map(&:serialize).to_json.html_safe %>;
+  initPhrasesList('#phrases-list', phrases);
+</script>

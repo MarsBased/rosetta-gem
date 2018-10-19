@@ -20,20 +20,25 @@ module Rosetta
       private
 
       def file_has_phrase?(filename, keys)
-        type = File.extname(filename).tr('.', '').downcase
-        return unless type == 'yml'
+        file_translations(filename).dig(I18n.config.locale.to_s, *keys.map(&:to_s))
+      end
 
-        unless file_translations(filename).is_a?(Hash)
+      def file_translations(filename)
+        translations[filename] ||= load_translations_in_file(filename)
+      end
+
+      # rubocop:disable Style/Send
+      def load_translations_in_file(filename)
+        type = File.extname(filename).tr('.', '').downcase
+        return {} unless %w[yml yaml].include?(type)
+
+        translations = I18n.backend.send(:load_yml, filename)
+        unless translations.is_a?(Hash)
           fail I18n::InvalidLocaleData.new(filename,
                                            'expects it to return a hash, but does not')
         end
 
-        file_translations(filename).dig(I18n.config.locale.to_s, *keys.map(&:to_s))
-      end
-
-      # rubocop:disable Style/Send
-      def file_translations(filename)
-        translations[filename] ||= I18n.backend.send(:load_yml, filename)
+        translations
       end
       # rubocop:enable Style/Send
 
