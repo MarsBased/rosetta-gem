@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  mount Rosetta::Engine, at: '/rosetta'
-
   scope '(:locale)' do
+    mount Rosetta::Engine, at: '/rosetta'
+
     root to: 'samples#index'
 
     resource :samples, only: %w[index] do

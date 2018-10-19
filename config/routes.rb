@@ -1,5 +1,5 @@
 Rosetta::Engine.routes.draw do
-  # scope 'rosetta' do
-  resources :repository_databases, constraints: { id: %r{[^\/]+} }
-  # end
+  namespace :database_repository do
+    resources :phrases, constraints: { id: %r{[^\/]+} }, only: [:update]
+  end
 end

@@ -10,7 +10,9 @@ module Rosetta
         'Database'
       end
 
-      def build_link(keys, **_args); end
+      def build_link(_keys, **_args)
+        ''
+      end
 
     end
   end
