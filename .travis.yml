@@ -19,6 +19,7 @@ addons:
 before_install:
 - gem update --system
 script:
+- bin/rails db:migrate
 - bundle exec rubocop && xvfb-run bundle exec rspec spec
 notifications:
   slack:
