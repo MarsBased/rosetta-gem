@@ -20,11 +20,14 @@
         Select any text in the page to search the corresponding translation.
       </p>
       <div class="phrases-menu__search"></div>
-      <% Rosetta.phrases.each do |phrase| %>
-        <%= render "rosetta/#{Rosetta.repository.id}/actions",
-                   phrase: phrase %>
-      <% end %>
+      <div class="phrases-menu__list">
+        <p><%= link_to 'View all phrases', rosetta.phrases_path, target: :blank %></p>
 
+        <% Rosetta.phrases.each do |phrase| %>
+          <%= render "rosetta/#{Rosetta.repository.id}/actions",
+                     phrase: phrase %>
+        <% end %>
+      </div>
       <div class="phrases-menu__footer">
         <h1>Rosetta</h1>
         <p>Rosetta is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
