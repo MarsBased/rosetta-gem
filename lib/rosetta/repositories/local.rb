@@ -30,7 +30,7 @@ module Rosetta
       # rubocop:disable Style/Send
       def load_translations_in_file(filename)
         type = File.extname(filename).tr('.', '').downcase
-        return {} unless type == 'yml' || type == 'yaml'
+        return {} unless %w[yml yaml].include?(type)
 
         translations = I18n.backend.send(:load_yml, filename)
         unless translations.is_a?(Hash)

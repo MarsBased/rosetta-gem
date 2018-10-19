@@ -65,6 +65,7 @@ module Rosetta
           build_phrases_from_translations(value, phrases, current_key + [key])
         else
           next if value.blank?
+
           phrases << build_phrase(keys: current_key + [key], phrase: value)
         end
       end
