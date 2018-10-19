@@ -1,0 +1,12 @@
+<div class="phrases-menu__block">
+  <div class="phrases-menu__key">
+    <%= phrase.code %>
+  </div>
+  <div class="phrases-menu__phrase">
+    <%= form_tag(rosetta.repository_database_path(id: phrase.code), method: :put, id: phrase.code) do %>
+      <%= hidden_field_tag(:current_path, request.env['PATH_INFO']) %>
+      <%= text_area_tag(:value, phrase.text, id: "#{phrase.code}_value", class: 'database__field') %>
+      <%= submit_tag("Update", id: "#{phrase.code}_submit") %>
+    <% end %>
+  </div>
+</div>
