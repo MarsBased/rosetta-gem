@@ -1,6 +1,8 @@
 require 'i18n'
 require 'request_store'
 
+require 'rosetta/core_ext/dig'
+
 require 'rosetta/config'
 require 'rosetta/engine'
 require 'rosetta/i18n_with_stored_phrases'
