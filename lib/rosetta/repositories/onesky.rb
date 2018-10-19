@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rosetta
   module Repositories
     class Onesky < Rosetta::Repository
@@ -19,8 +21,8 @@ module Rosetta
 
       private
 
-      DEFAULT_LANG_ID = '1'.freeze
-      LANGUAGE_FILE_PATH = 'lib/rosetta/repositories/onesky/languages_ids.yml'.freeze
+      DEFAULT_LANG_ID = '1'
+      LANGUAGE_FILE_PATH = 'lib/rosetta/repositories/onesky/languages_ids.yml'
 
       def base_url
         "https://#{subdomain}.oneskyapp.com/collaboration/translate/project/project"

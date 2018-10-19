@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this hook to configure the repository and other Rosetta options.
 Rosetta.setup do |config|
   # Uncomment the following lines to use the OneSky repository.

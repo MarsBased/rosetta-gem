@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rosetta
   module Repositories
     class Local < Rosetta::Repository

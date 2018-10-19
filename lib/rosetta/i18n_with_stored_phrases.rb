@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rosetta
   module I18nWithStoredPhrases
     def translate(*args)

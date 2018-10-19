@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 unless Hash.instance_methods.include?(:dig)
   Hash.class_eval do
     def dig(key, *args)
