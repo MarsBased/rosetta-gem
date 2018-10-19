@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem 'i18n-active_record'
 gem 'jquery-rails'
 gem 'puma'
 

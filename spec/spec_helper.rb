@@ -3,6 +3,7 @@ require 'rspec/rails'
 require 'rspec/its'
 require 'capybara/rspec'
 require 'capybara/webkit'
+require 'database_cleaner'
 
 Capybara.javascript_driver = :webkit
 
@@ -13,6 +14,15 @@ RSpec.configure do |config|
   config.before(:each) do
     Rosetta.config.set_defaults!
     Rosetta.enable
+  end
+
+  config.before(:each) do |example|
+    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
   end
 end
 

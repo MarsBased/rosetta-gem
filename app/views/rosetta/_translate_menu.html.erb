@@ -179,6 +179,11 @@
       transform: translate(-50%, -50%);
     }
 
+    .database__field{
+      min-width: 100%;
+      max-height: 150px important!;
+    }
+
   </style>
 
   <div id="phrasesMenu" class="phrases-menu <%= Rosetta.repository.id %>">
@@ -213,6 +218,8 @@
   <script type="text/javascript">
     /* Toggle the Translate menu */
     $( document ).ready(function() {
+      var outPhrasesMenu = true;
+
       var searchSelectedText = function(){
         var text = window.getSelection().toString();
         if (text != ''){
@@ -221,7 +228,7 @@
           $('.phrases-menu__block').addClass('hide');
           $matches.removeClass('hide');
           $('.phrases-menu__search').html('<u>Search</u>: ' + text);
-          
+
           if($matches.length > 0){
             $('.phrases-menu').addClass('match-phrase');
           }else{
@@ -236,8 +243,20 @@
         }
       }
       $('*').mouseup(function() {
-        searchSelectedText();
+        if(outPhrasesMenu){
+          searchSelectedText();
+        }
       });
+
+      $('#phrasesMenu').on('mouseenter', function(e){
+        console.log('#phrasesMenu', 'mouseenter');
+        outPhrasesMenu = false;
+      })
+
+      $('#phrasesMenu').on('mouseleave', function(e){
+        console.log('#phrasesMenu', 'mouseleave');
+        outPhrasesMenu = true;
+      })
     });
     function toggleNav() {
       document.getElementById("phrasesMenu").classList.toggle("open");

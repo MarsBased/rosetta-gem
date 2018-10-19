@@ -8,6 +8,7 @@ require 'rosetta/phrase'
 require 'rosetta/repository'
 require 'rosetta/controller_additions'
 
+require 'rosetta/repositories/database'
 require 'rosetta/repositories/local'
 require 'rosetta/repositories/onesky'
 
