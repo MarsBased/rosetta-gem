@@ -179,6 +179,16 @@
     color: #807e7e;
 }
 
+.phrases-list__search {
+    max-width: 100%;
+    padding: 16px;
+}
+
+.phrases-list__search input {
+    width: 100%;
+    font-size: 24px;
+}
+
 .phrases-menu__openbtn img {
     height: 30px;
     position: absolute;
