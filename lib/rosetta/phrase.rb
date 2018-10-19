@@ -15,5 +15,9 @@ module Rosetta
       @keys.join('.')
     end
 
+    def serialize
+      { code: code, text: text, repository_link: repository_link }
+    end
+
   end
 end
