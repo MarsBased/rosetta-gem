@@ -1,5 +1,5 @@
-//= require ./vue.min
-//= require ./lunr
+//= require ./vendor/vue.min
+//= require ./vendor/lunr
 
 function initPhrasesList(selector, phrases) {
   new Vue({
