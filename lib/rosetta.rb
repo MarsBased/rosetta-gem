@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'i18n'
+require 'sass-rails'
 require 'request_store'
 
 require 'rosetta/core_ext/dig'
