@@ -4,15 +4,9 @@
   </h1>
 </div>
 
-<div id="phrases-list">
-  <div class="phrases-list__search">
-    <input v-model="query" type="text" id="search" placeholder="Search (examples: hello, he*)">
-  </div>
+<%= render 'rosetta/phrases_list', repository_id: Rosetta.repository.id %>
 
-  <div v-for="phrase in filteredPhrases">
-    <%= render "rosetta/#{Rosetta.repository.id}/actions_vue" %>
-  </div>
-</div>
+<%= render 'rosetta/footer' %>
 
 <script type="application/javascript">
   var phrases = <%= @phrases.map(&:serialize).to_json.html_safe %>;
