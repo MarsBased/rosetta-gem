@@ -86,6 +86,8 @@ module Rosetta
     end
 
     def backend_extras
+      backend = I18n.backend
+
       if backend.class == I18n::Backend::ActiveRecord
         BackendExtras::ActiveRecord.new
       elsif backend.class == I18n::Backend::Simple
