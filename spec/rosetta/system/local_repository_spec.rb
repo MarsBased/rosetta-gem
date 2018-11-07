@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'Local repository' do
+describe 'Local repository', type: :system do
   before { visit local_samples_path }
 
   scenario 'show the translations', js: true do

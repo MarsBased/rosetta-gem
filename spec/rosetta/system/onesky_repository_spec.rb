@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'Onesky repository' do
+describe 'Onesky repository', type: :system do
   before do
     ENV['ONESKY_PROJECT_ID'] = '123'
     ENV['ONESKY_SUBDOMAIN'] = 'foo'

@@ -16,6 +16,10 @@ module Rosetta
             I18n.load_path << file_fixture('invalid.yml')
           end
 
+          after(:each) do
+            I18n.load_path.delete(file_fixture('invalid.yml'))
+          end
+
           it 'raises an exception' do
             expect do
               subject.build_link(%w[not_found])

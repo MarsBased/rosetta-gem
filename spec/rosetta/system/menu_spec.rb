@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'Translations menu' do
+describe 'Translations menu', type: :system do
   before { visit local_samples_path }
 
   scenario 'open the menu', js: true do
