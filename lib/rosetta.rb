@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'i18n'
+require 'sass-rails'
 require 'request_store'
 
 require 'rosetta/core_ext/dig'
@@ -11,6 +12,8 @@ require 'rosetta/i18n_with_stored_phrases'
 require 'rosetta/phrase'
 require 'rosetta/repository'
 require 'rosetta/controller_additions'
+
+require 'rosetta/backend_extras'
 
 require 'rosetta/repositories/database'
 require 'rosetta/repositories/local'
@@ -30,10 +33,8 @@ module Rosetta
     end
 
     def fetch_all_phrases(locale: I18n.default_locale)
-      translations = I18n.backend.translations(do_init: true).fetch(locale.to_sym, {})
-
-      I18n.with_locale(locale.to_sym) do
-        [].tap { |phrases| build_phrases_from_translations(translations, phrases) }
+      backend_extras.translates_list(locale: locale).map do |key, value|
+        build_phrase(keys: key.split('.'), phrase: value)
       end
     end
 
@@ -59,18 +60,6 @@ module Rosetta
 
     private
 
-    def build_phrases_from_translations(translations, phrases, current_key = [])
-      translations.each do |key, value|
-        if value.is_a? Hash
-          build_phrases_from_translations(value, phrases, current_key + [key])
-        else
-          next if value.blank?
-
-          phrases << build_phrase(keys: current_key + [key], phrase: value)
-        end
-      end
-    end
-
     def build_phrase(**args)
       fail ArgumentError, 'missing keys argument' if args[:keys].blank?
       fail ArgumentError, 'missing phrase argument' if args[:phrase].blank?
@@ -89,6 +78,18 @@ module Rosetta
 
     def request
       RequestStore.store[:rosetta] ||= {}
+    end
+
+    def backend_extras
+      backend = I18n.backend
+
+      if backend.class == I18n::Backend::ActiveRecord
+        BackendExtras::ActiveRecord.new
+      elsif backend.class == I18n::Backend::Simple
+        BackendExtras::Simple.new
+      elsif backend.class == I18n::Backend::Chain
+        BackendExtras::Chain.new
+      end
     end
 
   end

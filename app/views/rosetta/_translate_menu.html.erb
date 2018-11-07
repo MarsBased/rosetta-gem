@@ -1,86 +1,34 @@
 <% if rosetta? %>
   <%= stylesheet_link_tag 'rosetta/application' %>
+  <%= javascript_include_tag 'rosetta/application' %>
 
-  <div id="phrasesMenu" class="phrases-menu <%= Rosetta.repository.id %>">
-    <div class="open-phrases-menu-btn" onclick="toggleNav()">
+  <div id="phrasesMenu" v-bind:class="{ open: menuOpened }" class="phrases-menu <%= Rosetta.repository.id %>">
+    <div class="open-phrases-menu-btn" v-on:click="toggleNav">
       <div class="phrases-menu__openbtn">
         <%= image_tag('rosetta/language_icon.svg') %>
       </div>
+
       <div class="phrases-menu__closebtn">
         <%= image_tag('rosetta/close.svg') %>
       </div>
     </div>
+
     <div class="phrases-menu__header">
       <h1 class="phrases-menu__title">
         <%= Rosetta.repository.label %> <b>[<%= Rosetta.locale %>]</b>
       </h1>
+      <%= link_to 'All Phrases', rosetta.phrases_path, target: '_blank' %>
     </div>
-    <div class="phrases-menu__content">
-      <p class="phrases-menu__intro">
-        Select any text in the page to search the corresponding translation.
-      </p>
-      <div class="phrases-menu__search"></div>
-      <div class="phrases-menu__list">
-        <p><%= link_to 'View all phrases', rosetta.phrases_path, target: :blank %></p>
 
-        <% Rosetta.phrases.each do |phrase| %>
-          <%= render "rosetta/#{Rosetta.repository.id}/actions",
-                     phrase: phrase %>
-        <% end %>
-      </div>
-      <div class="phrases-menu__footer">
-        <h1>Rosetta</h1>
-        <p>Rosetta is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
-        <p><a href="https://github.com/MarsBased/rosetta" target="_blank">View in Github</a></p>
-      </div>
+    <div class="phrases-menu__content">
+      <%= render 'rosetta/phrases_list', repository_id: Rosetta.repository.id %>
+
+      <%= render 'rosetta/footer' %>
     </div>
   </div>
 
-  <script type="text/javascript">
-    /* Toggle the Translate menu */
-    $( document ).ready(function() {
-      var outPhrasesMenu = true;
-
-      var searchSelectedText = function(){
-        var text = window.getSelection().toString();
-        if (text != ''){
-          var $matches = $( "div:contains('"+text+"')" ).parent('.phrases-menu__block');
-
-          $('.phrases-menu__block').addClass('hide');
-          $matches.removeClass('hide');
-          $('.phrases-menu__search').html('<u>Search</u>: ' + text);
-
-          if($matches.length > 0){
-            $('.phrases-menu').addClass('match-phrase');
-          }else{
-            $('.phrases-menu').addClass('unmatch-phrase');
-            $('.phrases-menu').removeClass('match-phrase');
-          }
-        }else{
-          $('.phrases-menu__block').removeClass('hide');
-          $('.phrases-menu__search').html('');
-          $('.phrases-menu').removeClass('unmatch-phrase');
-          $('.phrases-menu').removeClass('match-phrase');
-        }
-      }
-      $('*').mouseup(function() {
-        if(outPhrasesMenu){
-          searchSelectedText();
-        }
-      });
-
-      $('#phrasesMenu').on('mouseenter', function(e){
-        console.log('#phrasesMenu', 'mouseenter');
-        outPhrasesMenu = false;
-      })
-
-      $('#phrasesMenu').on('mouseleave', function(e){
-        console.log('#phrasesMenu', 'mouseleave');
-        outPhrasesMenu = true;
-      })
-    });
-    function toggleNav() {
-      document.getElementById("phrasesMenu").classList.toggle("open");
-    }
+  <script type="application/javascript">
+    var phrases = <%= Rosetta.phrases.map(&:serialize).to_json.html_safe %>;
+    initPhrasesList('#phrasesMenu', phrases);
   </script>
 <% end %>

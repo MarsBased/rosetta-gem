@@ -3,6 +3,7 @@
 *.rbc
 .bundle
 .config
+.vscode
 Gemfile.lock
 .bundle/
 log/*.log
