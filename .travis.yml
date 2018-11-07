@@ -6,18 +6,18 @@ rvm:
 - 2.3.7
 - 2.4.4
 - 2.5.1
-env:
-  global:
-  - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
-addons:
-  apt:
-    sources:
-    - ubuntu-sdk-team
-    packages:
-    - libqt5webkit5-dev
-    - qtdeclarative5-dev
+addons: # get google-chrome-stable
+  chrome: stable
+install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
+  - wget -N https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip -P ~/
+  - unzip ~/chromedriver_linux64.zip -d ~/
+  - rm ~/chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 before_install:
 - gem update --system
+- bundle install
 script:
 - bin/rails db:migrate
 - bundle exec rubocop && xvfb-run bundle exec rspec spec
