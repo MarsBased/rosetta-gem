@@ -33,14 +33,9 @@ module Rosetta
     end
 
     def fetch_all_phrases(locale: I18n.default_locale)
-      backend_extra = backend_extras
-
-      output = []
-      backend_extra.translates_list(locale: locale).each do |key, value|
-        repository_link = config.repository.build_link(key.split('.'), locale: locale)
-        output << Phrase.new(key.split('.'), value, repository_link)
+      backend_extras.translates_list(locale: locale).map do |key, value|
+        build_phrase(keys: key.split('.'), phrase: value)
       end
-      output
     end
 
     def phrases

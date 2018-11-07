@@ -48,8 +48,7 @@ function initPhrasesList(selector, phrases) {
 
     methods: {
       toggleNav: function() {
-        this.menuOpened = this.menuOpened ? false : true;
-        console.log('toggleNav', this.menuOpened);
+        this.menuOpened = !this.menuOpened;
       }
     }
   });
