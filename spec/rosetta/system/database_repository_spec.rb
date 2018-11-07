@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'Onesky repository' do
+describe 'Onesky repository', type: :system do
   before { visit database_samples_path }
 
   scenario 'show the translations in yml file', js: true do

@@ -1,33 +1,27 @@
 # frozen_string_literal: true
 
+ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../dummy/config/environment', __FILE__)
+
 require 'rspec/rails'
 require 'rspec/its'
-require 'capybara/rspec'
-require 'capybara/webkit'
-require 'database_cleaner'
-
-Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
-  config.include Capybara::DSL
-  config.include Capybara::RSpecMatchers
-
   config.before(:each) do
+    Translation.delete_all
+
     Rosetta.config.set_defaults!
     Rosetta.enable
   end
 
-  config.before(:each) do |example|
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
-    DatabaseCleaner.start
+  config.before(:each, type: :system) do
+    driven_by :rack_test
   end
 
-  config.append_after(:each) do
-    DatabaseCleaner.clean
-  end
-end
+  config.before(:each, type: :system, js: true) do
+    # Silent puma messages when execute :js tests (rspec 3.7)
+    Capybara.server = :puma, { Silent: true }
 
-Capybara.configure do |config|
-  config.ignore_hidden_elements = false
+    driven_by :selenium_chrome_headless
+  end
 end
