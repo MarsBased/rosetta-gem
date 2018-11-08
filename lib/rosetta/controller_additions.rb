@@ -7,7 +7,6 @@ module Rosetta
     included do
       helper_method :rosetta?
       helper_method :rosetta_menu
-      helper_method :database_repository_phrase_vue_path
     end
 
     def enable_rosetta
@@ -20,11 +19,6 @@ module Rosetta
 
     def rosetta_menu
       'rosetta/translate_menu'
-    end
-
-    def database_repository_phrase_vue_path
-      base_path = rosetta.database_repository_phrase_path('__').gsub('__', '')
-      "'#{base_path}' + phrase.code "
     end
   end
 end
