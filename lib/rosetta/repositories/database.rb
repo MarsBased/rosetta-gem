@@ -4,6 +4,8 @@ module Rosetta
   module Repositories
     class Database < Rosetta::Repository
 
+      include Rosetta::Engine.routes.url_helpers
+
       def id
         'database'
       end
@@ -12,8 +14,8 @@ module Rosetta
         'Database'
       end
 
-      def build_link(_keys, **_args)
-        ''
+      def build_link(keys, **_args)
+        database_repository_phrase_path(keys.join('.'))
       end
 
     end

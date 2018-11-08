@@ -4,7 +4,7 @@
   </div>
 
   <div class="phrases-menu__phrase">
-    <form v-bind:id="phrase.code" v-bind:action="<%= database_repository_phrase_vue_path %>" accept-charset="UTF-8" method="post">
+    <form v-bind:id="phrase.code" v-bind:action="phrase.repository_link" accept-charset="UTF-8" method="post">
       <input name="utf8" type="hidden" value="✓">
       <input type="hidden" name="_method" value="put">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
