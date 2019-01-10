@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Rosetta::VERSION
   s.authors     = ['MarsBased']
   s.email       = ['hola@marsbased.com']
-  s.homepage    = 'https://github.com/MarsBased/rosetta'
+  s.homepage    = 'https://github.com/MarsBased/rosetta-gem'
   s.summary     = 'Rosetta makes it easy for copy writers to edit the translations of your app.'
   s.description = 'Rosetta makes it easy for copy writers to edit the translations of your app.'
   s.license     = 'MIT'
