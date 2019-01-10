@@ -36,7 +36,7 @@ It requires 2 configuration options:
 Add this to your Gemfile:
 
 ```ruby
-gem 'rosetta', '~> 1.0'
+gem 'rosetta', '~> 1.1'
 ```
 
 and run the `bundle install` command.
