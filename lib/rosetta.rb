@@ -22,8 +22,7 @@ module Rosetta
     end
 
     def add_phrase(**args)
-      fail ArgumentError, 'missing keys argument' if args[:keys].blank?
-      fail ArgumentError, 'missing phrase argument' if args[:phrase].blank?
+      fail ArgumentError, 'Rosetta: missing keys argument' if args[:keys].blank?
 
       repository_link = config.repository.build_link(args[:keys], locale: locale)
       phrases << Phrase.new(args[:keys], args[:phrase], repository_link)

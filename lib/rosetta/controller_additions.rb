@@ -21,6 +21,6 @@ module Rosetta
   end
 end
 
-ActiveSupport.on_load(:action_controller) do
-  include Rosetta::ControllerAdditions
+ActiveSupport.on_load(:action_controller) do |klass|
+  include Rosetta::ControllerAdditions if klass == ActionController::Base
 end
