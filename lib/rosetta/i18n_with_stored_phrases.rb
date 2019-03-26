@@ -7,7 +7,7 @@ module Rosetta
       keys = normalize_keys('', args.dig(0), args.dig(1, :scope))
       code = keys.join('.')
 
-      Rosetta.add_phrase(keys: keys, phrase: output) if exists?(code, config.locale)
+      Rosetta.add_phrase(keys: keys, phrase: output.to_s) if exists?(code, config.locale)
 
       output
     end
